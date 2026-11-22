@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { KeyRound, Mail, Save, ShieldCheck, Sparkles, Store, Wallet } from 'lucide-react';
-import { useShopSettings } from '@/hooks/useShop';
-import { useSettingsMutation } from '@/hooks/useAdmin';
+import { useAdminSettings, useSettingsMutation } from '@/hooks/useAdmin';
 import { AdminHeader, AdminPage } from '@/components/admin/AdminLayout';
 import { Badge, Button, Card, CardHeader, Checkbox, Field, Input, LoadingBlock,
          Notice, Select } from '@/components/ui';
@@ -53,7 +52,7 @@ const INTEGRATIONS = [
 ] as const;
 
 export function SettingsPage() {
-  const { data: settings, isLoading } = useShopSettings();
+  const { data: settings, isLoading } = useAdminSettings();
   const mutation = useSettingsMutation();
   const [form, setForm] = useState<Partial<ShopSettings>>({});
   const [saved, setSaved] = useState(false);

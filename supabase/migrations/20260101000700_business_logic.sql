@@ -311,3 +311,29 @@ language sql stable security definer set search_path = public as $$
 $$;
 
 grant execute on function public.store_unit_economics(integer) to authenticated;
+
+-- ════════════ Paramètres publics de la boutique ═════════════════════
+--  La table `shop_settings` contient des données d'exploitation qui ne
+--  doivent PAS être lisibles publiquement : marge nette cible, coût
+--  d'acquisition visé, charges fixes mensuelles, modèle d'analyse.
+--  La boutique n'a besoin que de l'identité et des règles d'affichage :
+--  cette vue expose exactement cela, et rien de plus.
+create or replace view public.shop_public_settings as
+  select shop_name,
+         tagline,
+         contact_email,
+         support_phone,
+         currency,
+         default_locale,
+         vat_rate,
+         prices_include_vat,
+         free_shipping_above,
+         address,
+         social,
+         announcement
+    from public.shop_settings
+   where id;
+
+comment on view public.shop_public_settings is
+  'Sous-ensemble publiable de shop_settings. Les objectifs économiques '
+  '(marge cible, CAC, charges fixes) restent réservés à l''équipe.';

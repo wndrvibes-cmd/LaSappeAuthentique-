@@ -188,6 +188,15 @@ export interface ShopSettings {
   announcement: string | null; updated_at: string;
 }
 
+/** Sous-ensemble publiable de `shop_settings` (vue `shop_public_settings`). */
+export interface ShopPublicSettings {
+  shop_name: string; tagline: string; contact_email: string;
+  support_phone: string | null; currency: string; default_locale: string;
+  vat_rate: number; prices_include_vat: boolean;
+  free_shipping_above: number | null; address: Json; social: Json;
+  announcement: string | null;
+}
+
 export interface NexscopeSkill {
   slug: string; name: string; category: string; platform: string | null;
   emoji: string | null; description: string; source_path: string;
@@ -362,6 +371,7 @@ export interface Database {
       kpi_daily: View<KpiDaily>;
       product_performance: View<ProductPerformance>;
       inventory_health: View<InventoryHealth>;
+      shop_public_settings: View<ShopPublicSettings>;
     };
     Functions: {
       validate_discount: {

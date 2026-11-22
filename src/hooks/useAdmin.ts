@@ -369,6 +369,22 @@ export function useAdminSuppliers() {
 
 /* ──────────────────────────── Paramètres ───────────────────────────── */
 
+/**
+ * Paramètres complets de la boutique, objectifs économiques inclus.
+ * Réservé au back-office : la table n'est lisible que par l'équipe.
+ */
+export function useAdminSettings() {
+  return useQuery({
+    queryKey: ['admin', 'settings'],
+    staleTime: 60_000,
+    queryFn: async (): Promise<ShopSettings | null> => {
+      const { data, error } = await supabase.from('shop_settings').select('*').maybeSingle();
+      if (error) throw error;
+      return data;
+    },
+  });
+}
+
 export function useSettingsMutation() {
   const qc = useQueryClient();
   return useMutation({

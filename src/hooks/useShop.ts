@@ -8,17 +8,25 @@ import { supabase } from '@/lib/supabase';
 import type {
   Category, InventoryHealth, Order, OrderItem, Product, ProductImage, ProductOption,
   ProductOptionValue, ProductReview, ProductVariant, Promotion, ShippingMethod,
-  ShopSettings, VariantAvailability,
+  ShopPublicSettings, VariantAvailability,
 } from '@/types/database';
 
 /* ───────────────────────── Paramètres boutique ────────────────────────── */
 
+/**
+ * Paramètres publics de la boutique.
+ *
+ * Lecture de la vue `shop_public_settings` et non de la table : les objectifs
+ * économiques (marge cible, coût d'acquisition visé, charges fixes) ne sont
+ * pas publiables. Le back-office lit la table complète via `useAdminSettings`.
+ */
 export function useShopSettings() {
   return useQuery({
     queryKey: ['shop-settings'],
     staleTime: 5 * 60_000,
-    queryFn: async (): Promise<ShopSettings | null> => {
-      const { data, error } = await supabase.from('shop_settings').select('*').maybeSingle();
+    queryFn: async (): Promise<ShopPublicSettings | null> => {
+      const { data, error } = await supabase
+        .from('shop_public_settings').select('*').maybeSingle();
       if (error) throw error;
       return data;
     },

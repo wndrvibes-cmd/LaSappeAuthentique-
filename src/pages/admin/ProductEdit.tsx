@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Brain, Trash2, Upload } from 'lucide-react';
-import { useAdminProduct, useSaveProduct, useAdjustStock } from '@/hooks/useAdmin';
+import { useAdminProduct, useAdminSettings, useSaveProduct, useAdjustStock } from '@/hooks/useAdmin';
 import { useAdminCategories, useAdminSuppliers } from '@/hooks/useAdmin';
 import { computeBreakdown, computePricingGrid } from '@/lib/nexscope/engines/profit-margin';
 import { AdminHeader, AdminPage } from '@/components/admin/AdminLayout';
@@ -43,13 +43,7 @@ export function ProductEditPage() {
   const [feedback, setFeedback] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  const { data: settings } = useQuery({
-    queryKey: ['shop-settings'],
-    queryFn: async () => {
-      const { data } = await supabase.from('shop_settings').select('*').maybeSingle();
-      return data;
-    },
-  });
+  const { data: settings } = useAdminSettings();
 
   useEffect(() => {
     if (detail?.product) {

@@ -29,6 +29,8 @@ alter view public.variant_margins      set (security_invoker = on);
 alter view public.kpi_daily            set (security_invoker = on);
 alter view public.product_performance  set (security_invoker = on);
 alter view public.inventory_health     set (security_invoker = on);
+-- `shop_public_settings` est volontairement laissée en security_definer :
+-- c'est ce qui autorise la lecture publique de ses seules colonnes.
 
 -- ══════════════════════════ CATALOGUE ═══════════════════════════════
 create policy "categories visibles publiquement"
@@ -222,11 +224,19 @@ create policy "lignes de bons de commande réservées à l'équipe"
   using (public.is_staff()) with check (public.is_staff());
 
 -- ════════════════════════ PARAMÈTRES ══════════════════════════════
-create policy "paramètres boutique lisibles publiquement"
-  on public.shop_settings for select using (true);
+--  La table complète contient les objectifs économiques de la boutique :
+--  sa lecture est réservée à l'équipe. La boutique publique passe par la vue
+--  `shop_public_settings`, qui n'expose que l'identité et l'affichage.
+create policy "paramètres boutique lisibles par l'équipe"
+  on public.shop_settings for select to authenticated using (public.is_staff());
 create policy "paramètres modifiables par un administrateur"
   on public.shop_settings for update to authenticated
   using (public.is_admin()) with check (public.is_admin());
+
+-- La vue publique s'exécute avec les droits de son propriétaire (pas
+-- `security_invoker`), ce qui permet la lecture anonyme des seules colonnes
+-- publiables sans ouvrir la table sous-jacente.
+grant select on public.shop_public_settings to anon, authenticated;
 
 -- ═══════════════ INTELLIGENCE NEXSCOPE (équipe seule) ═════════════
 create policy "registre des modules lisible par l'équipe"
@@ -287,8 +297,12 @@ create policy "approbations lisibles par l'équipe"
 create policy "approbations décidées par un administrateur"
   on public.approval_requests for update to authenticated
   using (public.is_admin()) with check (public.is_admin());
-create policy "approbations créées par un administrateur"
-  on public.approval_requests for insert to authenticated with check (public.is_admin());
+--  L'équipe peut PROPOSER une action sensible (en exécutant un module) ;
+--  seul un administrateur peut la décider et l'appliquer. La séparation
+--  entre proposition et décision est le cœur du garde-fou.
+create policy "approbations proposées par l'équipe"
+  on public.approval_requests for insert to authenticated
+  with check (public.is_staff() and status = 'pending' and decided_by is null);
 
 create policy "alertes lisibles par l'équipe"
   on public.alerts for select to authenticated using (public.is_staff());
