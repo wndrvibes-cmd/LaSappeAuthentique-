@@ -22,6 +22,21 @@ Le dépôt ne contient **aucun binaire, aucune clé API et aucune dépendance
 réseau obligatoire**. Chaque compétence est un fichier Markdown décrivant une
 méthode d'analyse, parfois accompagné de scripts Python autonomes.
 
+### Trois formats de métadonnées
+
+Point important relevé par l'audit : le dépôt n'utilise **pas un seul format**
+de métadonnées. S'en tenir au plus courant laissait 42 modules sur 162 sans
+description exploitable — défaut détecté en appliquant réellement le schéma à
+une base PostgreSQL, la contrainte `not null` ayant refusé l'insertion.
+
+| Format | Fichiers | Où lire la description |
+|---|---:|---|
+| Frontmatter plat (`name:` / `description:`) | 120 | dans le frontmatter |
+| Frontmatter imbriqué (`nexscope:` { name, category, tags… }) | 16 | **absente** du frontmatter : premier paragraphe du corps |
+| Aucun frontmatter | 26 | titre `#` et premier paragraphe |
+
+Le générateur lit les trois. Aucun module n'est enregistré sans description.
+
 ### Structure observée
 
 ```
@@ -44,32 +59,32 @@ découpage est peu utile : le classement retenu est **fonctionnel**.
 
 | Catégorie | Modules | Dont avec moteur de calcul |
 |---|---:|---:|
-| Canaux & Marketplaces | 20 | 0 |
-| Stocks & Logistique | 16 | 7 |
-| Marketing & Acquisition | 16 | 1 |
-| Fidélisation & Relation client | 15 | 4 |
-| SEO & Visibilité | 15 | 9 |
-| Veille concurrentielle | 14 | 5 |
-| Prix & Rentabilité | 13 | 6 |
-| Conversion & Expérience | 11 | 6 |
+| Stocks & Logistique | 19 | 9 |
+| Prix & Rentabilité | 18 | 9 |
+| Marketing & Acquisition | 18 | 1 |
+| SEO & Visibilité | 17 | 9 |
+| Veille concurrentielle | 16 | 6 |
+| Fidélisation & Relation client | 14 | 5 |
+| Conversion & Expérience | 12 | 4 |
 | Marque & Réputation | 11 | 2 |
 | Recherche produit & Opportunités | 10 | 9 |
 | Contenu & Fiches produits | 10 | 2 |
-| International & Conformité | 4 | 1 |
+| Canaux & Marketplaces | 7 | 0 |
 | Surveillance & Fiabilité | 4 | 0 |
 | Analytique & Pilotage | 3 | 3 |
-| **Total** | **162** | **55** |
+| International & Conformité | 3 | 1 |
+| **Total** | **162** | **60** |
 
 ### Répartition par canal d'origine
 
 | Canal | Modules |
 |---|---:|
-| tous canaux | 60 |
-| shopify | 30 |
+| tous canaux | 58 |
+| shopify | 31 |
 | tiktok-shop | 28 |
 | etsy | 22 |
+| walmart | 9 |
 | ebay | 8 |
-| walmart | 8 |
 | amazon | 5 |
 | woocommerce | 1 |
 
@@ -84,11 +99,11 @@ en TypeScript : les moteurs tournent dans l'application, sans service tiers.
 
 ### 3.2 Modules dépendant de données externes
 
-23 modules sur 162 ne peuvent pas produire d'analyse
+33 modules sur 162 ne peuvent pas produire d'analyse
 complète sans une source de données que le dépôt ne fournit pas. Ils sont
 signalés comme tels dans l'application, et leur mode de repli est explicite.
 
-**1. 2 module(s)** — competitor-price-tracker, competitor-price-analysis
+**1. 4 module(s)** — competitor-price-tracker, competitor-price-analysis, walmart-price-tracker, share-of-shelf
 
 > Relevés de prix concurrents : saisie manuelle et import CSV disponibles sans clé. Pour une collecte automatique, connecter une source de données marché (API Nexscope ou équivalent).
 
@@ -100,13 +115,17 @@ signalés comme tels dans l'application, et leur mode de repli est explicite.
 
 > Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.
 
-**4. 7 module(s)** — brand-monitoring, brand-protection-tiktok, brand-protection-amazon, brand-protection-shopify, brand-protection-walmart, brand-protection-ebay, et 1 autre(s)
+**4. 9 module(s)** — brand-monitoring, brand-protection-tiktok, brand-protection-amazon, brand-protection-shopify, brand-protection-walmart, online-reputation-management, et 3 autre(s)
 
 > Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.
 
 **5. 3 module(s)** — tiktok-shop-trending-products, ecommerce-keyword-research, etsy-keyword-research
 
 > Volumes de recherche et tendances : connecter une source de données mots-clés pour des chiffres réels. Sans clé, le module travaille sur vos propres données de recherche interne.
+
+**6. 6 module(s)** — synthetic-monitoring, visual-regression-testing, localization-testing, api-monitoring, file-integrity-monitoring, public-status-page
+
+> Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.
 
 ### 3.3 MCP
 
@@ -122,7 +141,7 @@ modification du schéma.
 
 ## 4. Moteurs de calcul portés dans l'application
 
-55 modules s'appuient sur l'un des **13 moteurs déterministes**
+60 modules s'appuient sur l'un des **13 moteurs déterministes**
 portés en TypeScript. Ils s'exécutent dans l'application, sur les données
 réelles de la boutique, sans clé API, avec un résultat reproductible.
 
@@ -131,15 +150,15 @@ réelles de la boutique, sans clé API, avec un résultat reproductible.
 | `profit-margin` | profit-margin-calculator/<canal>/scripts/calculator.py | Décomposition de coûts, marge brute et nette, point mort, grille de prix conseillés | 4 |
 | `supply-chain` | supply-chain-optimization/<canal>/scripts/calculator.py | Référentiels par canal, cycle de trésorerie, diagnostic de goulots, EOQ et stock de sécurité | 5 |
 | `listing-seo` | etsy-seo/scripts/analyzer.py | Notation pondérée titre 30 % / mots-clés 25 % / description 20 % / attributs 15 % / images 10 % | 9 |
-| `dynamic-pricing` | dynamic-pricing-ecommerce/ · competitive-pricing-strategy/ · price-optimization-tool/ · minimum-advertised-price/ | Repricing borné avec prix plancher, approbation obligatoire et conservation de l’état antérieur | 3 |
+| `dynamic-pricing` | dynamic-pricing-ecommerce/ · competitive-pricing-strategy/ · price-optimization-tool/ · minimum-advertised-price/ | Repricing borné avec prix plancher, approbation obligatoire et conservation de l’état antérieur | 4 |
 | `unit-economics` | ecommerce-growth-strategy/SKILL.md · ecommerce-business-plan/ | Économie unitaire (panier moyen, marge de contribution, réachat, CAC, LTV) et chiffrage des cinq leviers | 2 |
-| `inventory-forecast` | inventory-tracking-software/ · restock-alert/ · warehouse-optimization/ · shopify-inventory-management/ | Vélocité réelle, couverture, stock de sécurité au taux de service, point de commande, EOQ, classification ABC | 2 |
+| `inventory-forecast` | inventory-tracking-software/ · restock-alert/ · warehouse-optimization/ · shopify-inventory-management/ | Vélocité réelle, couverture, stock de sécurité au taux de service, point de commande, EOQ, classification ABC | 4 |
 | `sales-analytics` | sales-tracking-tool/ · shopify-analytics-guide/ · etsy-shop-analytics/ · tiktok-shop-analytics/ | Tendance période sur période, concentration (Pareto et Herfindahl), accélérations, décrochages, anomalies | 4 |
-| `review-analysis` | review-checker/<canal>/scripts/analyzer.py · product-review-analysis/ · customer-feedback-analysis/ | Extraction des points de friction et des arguments, détection de similarité, regroupement temporel, polarisation | 5 |
+| `review-analysis` | review-checker/<canal>/scripts/analyzer.py · product-review-analysis/ · customer-feedback-analysis/ | Extraction des points de friction et des arguments, détection de similarité, regroupement temporel, polarisation | 6 |
 | `cross-border` | cross-border-ecommerce/SKILL.md · shopify-tax-compliance/ · shopify-international/ | Notation de marchés, régimes de TVA, seuils douaniers, suivi du seuil OSS de 10 000 € | 3 |
 | `opportunity-score` | dropshipping-product-research/ · market-gap-analysis/ · ebay-product-research/ · product-launch-strategy/ | Notation demande 30 % / concurrence 25 % / marge 30 % / logistique 15 %, avec vérification de rentabilité réelle | 5 |
 | `funnel-cro` | conversion-rate-optimization/ · ecommerce-checkout-optimization/ · ecommerce-ab-testing/ · shopify-cart-abandonment/ | Perte chiffrée par étape, frictions structurelles, dimensionnement de test A/B à 95 % / 80 % | 7 |
-| `price-tracking` | competitor-price-tracker/ · competitor-price-analysis/ · share-of-shelf/ · walmart-price-tracker/ | Médiane et dispersion des relevés, rang de prix, écarts au-delà du seuil, rejet des relevés périmés | 2 |
+| `price-tracking` | competitor-price-tracker/ · competitor-price-analysis/ · share-of-shelf/ · walmart-price-tracker/ | Médiane et dispersion des relevés, rang de prix, écarts au-delà du seuil, rejet des relevés périmés | 3 |
 | `differentiation` | product-differentiation/<canal>/scripts/analyzer.py | Matrice de comparaison pondérée, avantages, retards, terrains libres, positionnement | 4 |
 
 ### Écarts assumés par rapport aux scripts d'origine
@@ -177,7 +196,7 @@ Le portage a mis en évidence quatre défauts, corrigés et couverts par des tes
 
 ## 5. Modules en analyse rédigée
 
-107 modules n'ont pas d'algorithme déterministe : leur valeur réside
+102 modules n'ont pas d'algorithme déterministe : leur valeur réside
 dans la méthode décrite en Markdown. Pour eux, la plateforme :
 
 1. récupère le `SKILL.md` **réel** depuis le dépôt public (puis le met en
@@ -189,7 +208,7 @@ dans la méthode décrite en Markdown. Pour eux, la plateforme :
 4. enregistre le rapport, les jetons consommés et le contexte utilisé.
 
 Ces modules requièrent `ANTHROPIC_API_KEY`. Sans elle, les
-55 modules à moteur de calcul restent pleinement exploitables.
+60 modules à moteur de calcul restent pleinement exploitables.
 
 ## 6. Inventaire complet
 
@@ -208,26 +227,13 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
-| `E-Commerce Feed Management` | A | — | — | `ecommerce-feed-management` |
-| `ebay-seller-guide` | A | — | — | `ebay-seller-guide` |
-| `ebay-seller-tools` | A | — | — | `ebay-seller-tools` |
 | `etsy-digital-products` | A | — | — | `etsy-digital-products` |
 | `etsy-print-on-demand` | A | — | — | `etsy-print-on-demand` |
-| `etsy-seller-guide` | A | — | — | `etsy-seller-guide` |
-| `multichannel-ecommerce` | A | — | — | `multichannel-ecommerce` |
-| `omnichannel-ecommerce` | A | — | — | `omnichannel-ecommerce` |
-| `Public Status Page` | A | — | — | `public-status-page` |
-| `Share of Shelf` | A | — | — | `share-of-shelf` |
-| `Shopify Page Speed` | A | — | — | `shopify-page-speed` |
 | `shopify-app-recommendations` | A | — | — | `shopify-app-recommendations` |
 | `shopify-google-channel` | A | — | — | `shopify-google-channel` |
 | `shopify-migration` | A | — | — | `shopify-migration` |
-| `shopify-store-setup` | A | — | — | `shopify-store-setup` |
 | `tiktok-live-selling` | A | — | — | `tiktok-live-selling` |
 | `tiktok-shop-content-strategy` | A | — | — | `tiktok-shop-content-strategy` |
-| `Visual Regression Testing` | A | — | — | `visual-regression-testing` |
-| `walmart-seller-guide` | A | — | — | `walmart-seller-guide` |
-| `walmart-seller-tools` | A | — | — | `walmart-seller-tools` |
 
 ### Contenu & Fiches produits
 
@@ -249,29 +255,29 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
 | `conversion-rate-optimization` ★ | C+A | `funnel-cro` | — | `conversion-rate-optimization` |
-| `ecommerce-ab-testing` | C+A | `funnel-cro` | — | `ecommerce-ab-testing` |
 | `ecommerce-checkout-optimization` | C+A | `funnel-cro` | — | `ecommerce-checkout-optimization` |
 | `etsy-shop-analytics` | C+A | `sales-analytics` | — | `etsy-shop-analytics` |
-| `shopify-ab-testing` | C+A | `funnel-cro` | — | `shopify-ab-testing` |
 | `shopify-checkout-customization` | A | — | — | `shopify-checkout-customization` |
 | `shopify-conversion-optimization` | C+A | `funnel-cro` | — | `shopify-conversion-optimization` |
 | `shopify-facebook-instagram-shop` | A | — | — | `shopify-facebook-instagram-shop` |
+| `shopify-page-speed` | A | — | — | `shopify-page-speed` |
 | `shopify-speed-optimization` | A | — | — | `shopify-speed-optimization` |
 | `shopify-theme-optimization` | A | — | — | `shopify-theme-optimization` |
 | `shopify-upsell-cross-sell` | A | — | — | `shopify-upsell-cross-sell` |
+| `synthetic-monitoring` | A | — | oui | `synthetic-monitoring` |
+| `visual-regression-testing` | A | — | oui | `visual-regression-testing` |
 
 ### Fidélisation & Relation client
 
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
-| `Customer Feedback Analysis` | A | — | — | `customer-feedback-analysis` |
+| `customer-feedback-analysis` | C+A | `review-analysis` | — | `customer-feedback-analysis` |
 | `ebay-review-checker` | C+A | `review-analysis` | oui | `review-checker/ebay-review-checker` |
 | `ecommerce-customer-retention` ★ | A | — | — | `ecommerce-customer-retention` |
 | `ecommerce-email-marketing-builder` ★ | A | — | — | `ecommerce-email-marketing-builder` |
 | `ecommerce-growth-strategy` ★ | C+A | `unit-economics` | — | `ecommerce-growth-strategy` |
 | `ecommerce-personalization` | A | — | — | `ecommerce-personalization` |
 | `ecommerce-returns-management` | A | — | — | `ecommerce-returns-management` |
-| `ecommerce-subscription-model` | A | — | — | `ecommerce-subscription-model` |
 | `product-review-analysis` | C+A | `review-analysis` | oui | `product-review-analysis` |
 | `shopify-cart-abandonment` | C+A | `funnel-cro` | — | `shopify-cart-abandonment` |
 | `shopify-email-flows` | A | — | — | `shopify-email-flows` |
@@ -284,7 +290,6 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
-| `Localization Testing` | A | — | — | `localization-testing` |
 | `shopify-tax-compliance` | A | — | — | `shopify-tax-compliance` |
 | `tiktok-shop-compliance` | A | — | — | `tiktok-shop-compliance` |
 | `tiktok-shop-cross-border` | C+A | `cross-border` | — | `tiktok-shop-cross-border` |
@@ -302,6 +307,7 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `etsy-offsite-ads` | A | — | oui | `etsy-offsite-ads` |
 | `etsy-social-media-marketing` | A | — | — | `etsy-social-media-marketing` |
 | `influencer-outreach` ★ | A | — | — | `influencer-outreach` |
+| `shopify-store-setup` | A | — | — | `shopify-store-setup` |
 | `supply-chain-optimization-tiktok` | C+A | `supply-chain` | — | `supply-chain-optimization/supply-chain-optimization-tiktok` |
 | `tiktok-creator-marketplace` | A | — | — | `tiktok-creator-marketplace` |
 | `tiktok-influencer-marketing` | A | — | — | `tiktok-influencer-marketing` |
@@ -309,6 +315,7 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `tiktok-shop-creator-management` | A | — | — | `tiktok-shop-creator-management` |
 | `tiktok-shop-seller-guide` | A | — | — | `tiktok-shop-seller-guide` |
 | `walmart-advertising-strategy` | A | — | oui | `walmart-advertising-strategy` |
+| `walmart-seller-tools` | A | — | — | `walmart-seller-tools` |
 
 ### Marque & Réputation
 
@@ -321,7 +328,7 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `ecommerce-branding` | A | — | — | `ecommerce-branding` |
 | `etsy-multi-shop` | A | — | — | `etsy-multi-shop` |
 | `etsy-review-strategy` | A | — | — | `etsy-review-strategy` |
-| `Online Reputation Management` | A | — | — | `online-reputation-management` |
+| `online-reputation-management` | A | — | oui | `online-reputation-management` |
 | `tiktok-shop-branding` | A | — | — | `tiktok-shop-branding` |
 | `tiktok-shop-reviews` | A | — | — | `tiktok-shop-reviews` |
 | `walmart-review-checker` | C+A | `review-analysis` | oui | `review-checker/walmart-review-checker` |
@@ -331,18 +338,23 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
 | `brand-protection-ebay` | A | — | oui | `brand-protection/brand-protection-ebay` |
+| `ebay-seller-guide` | A | — | — | `ebay-seller-guide` |
+| `ebay-seller-tools` | A | — | — | `ebay-seller-tools` |
+| `ecommerce-ab-testing` | C+A | `funnel-cro` | — | `ecommerce-ab-testing` |
+| `ecommerce-subscription-model` | A | — | — | `ecommerce-subscription-model` |
 | `etsy-custom-orders` | A | — | — | `etsy-custom-orders` |
-| `Minimum Advertised Price` | A | — | — | `minimum-advertised-price` |
+| `etsy-seller-guide` | A | — | — | `etsy-seller-guide` |
+| `minimum-advertised-price` | C+A | `dynamic-pricing` | — | `minimum-advertised-price` |
 | `price-optimization-tool` | C+A | `dynamic-pricing` | — | `price-optimization-tool` |
 | `profit-margin-calculator-amazon` | C+A | `profit-margin` | — | `profit-margin-calculator/profit-margin-calculator-amazon` |
 | `profit-margin-calculator-shopify` ★ | C+A | `profit-margin` | — | `profit-margin-calculator/profit-margin-calculator-shopify` |
 | `profit-margin-calculator-tiktok` | C+A | `profit-margin` | — | `profit-margin-calculator/profit-margin-calculator-tiktok` |
 | `profit-margin-calculator-walmart` | C+A | `profit-margin` | — | `profit-margin-calculator/profit-margin-calculator-walmart` |
+| `shopify-ab-testing` | C+A | `funnel-cro` | — | `shopify-ab-testing` |
 | `shopify-dropshipping` | A | — | — | `shopify-dropshipping` |
 | `shopify-international` | C+A | `cross-border` | — | `shopify-international` |
 | `shopify-wholesale-channel` | A | — | — | `shopify-wholesale-channel` |
 | `tiktok-shop-pricing` | A | — | — | `tiktok-shop-pricing` |
-| `Walmart Price Tracker` | A | — | — | `walmart-price-tracker` |
 
 ### Recherche produit & Opportunités
 
@@ -364,6 +376,7 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
 | `ebay-seo` | C+A | `listing-seo` | — | `ebay-seo` |
+| `ecommerce-feed-management` | A | — | — | `ecommerce-feed-management` |
 | `ecommerce-keyword-research` | A | — | oui | `ecommerce-keyword-research` |
 | `etsy-product-description` | A | — | — | `etsy-product-description` |
 | `etsy-seo` | C+A | `listing-seo` | — | `etsy-seo` |
@@ -377,6 +390,7 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `shopify-seo` ★ | C+A | `listing-seo` | — | `shopify-seo` |
 | `tiktok-shop-listing-optimization` | C+A | `listing-seo` | — | `tiktok-shop-listing-optimization` |
 | `walmart-listing-optimization` | C+A | `listing-seo` | — | `walmart-listing-optimization` |
+| `walmart-seller-guide` | A | — | — | `walmart-seller-guide` |
 | `woocommerce-seo` | C+A | `listing-seo` | — | `woocommerce-seo` |
 
 ### Stocks & Logistique
@@ -388,10 +402,13 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `etsy-seasonal-strategy` | A | — | — | `etsy-seasonal-strategy` |
 | `etsy-shipping-strategy` | A | — | — | `etsy-shipping-strategy` |
 | `etsy-star-seller` | A | — | — | `etsy-star-seller` |
-| `Inventory Tracking Software` | A | — | — | `inventory-tracking-software` |
-| `Restock Alert` | A | — | — | `restock-alert` |
+| `inventory-tracking-software` ★ | C+A | `inventory-forecast` | — | `inventory-tracking-software` |
+| `localization-testing` | A | — | oui | `localization-testing` |
+| `multichannel-ecommerce` | A | — | — | `multichannel-ecommerce` |
+| `omnichannel-ecommerce` | A | — | — | `omnichannel-ecommerce` |
+| `restock-alert` | C+A | `inventory-forecast` | — | `restock-alert` |
 | `shopify-inventory-management` | C+A | `inventory-forecast` | — | `shopify-inventory-management` |
-| `supply-chain-optimization-amazon-lite` | C+A | `supply-chain` | — | `supply-chain-optimization/supply-chain-optimization-amazon` |
+| `supply-chain-optimization-amazon` | C+A | `supply-chain` | — | `supply-chain-optimization/supply-chain-optimization-amazon` |
 | `supply-chain-optimization-shopify` ★ | C+A | `supply-chain` | — | `supply-chain-optimization/supply-chain-optimization-shopify` |
 | `supply-chain-optimization-walmart` | C+A | `supply-chain` | — | `supply-chain-optimization/supply-chain-optimization-walmart` |
 | `tiktok-shop-fulfillment` | A | — | — | `tiktok-shop-fulfillment` |
@@ -404,10 +421,10 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 
 | Module | Mode | Moteur | Ext. | Chemin dans le dépôt |
 |---|:--:|---|:--:|---|
-| `API Monitoring` | A | — | — | `api-monitoring` |
-| `Domain Monitoring` | A | — | — | `domain-monitoring` |
-| `File Integrity Monitoring` | A | — | — | `file-integrity-monitoring` |
-| `Synthetic Monitoring` | A | — | — | `synthetic-monitoring` |
+| `api-monitoring` | A | — | oui | `api-monitoring` |
+| `domain-monitoring` | A | — | oui | `domain-monitoring` |
+| `file-integrity-monitoring` | A | — | oui | `file-integrity-monitoring` |
+| `public-status-page` | A | — | oui | `public-status-page` |
 
 ### Veille concurrentielle
 
@@ -426,7 +443,9 @@ Légende du mode : **C** calcul local · **C+A** calcul puis analyse rédigée �
 | `etsy-pricing-strategy` | A | — | — | `etsy-pricing-strategy` |
 | `product-description-generator` ★ | A | — | — | `product-description-generator` |
 | `review-monitoring` ★ | C+A | `review-analysis` | oui | `review-monitoring` |
+| `share-of-shelf` | A | — | oui | `share-of-shelf` |
 | `social-media-monitor` | A | — | oui | `social-media-monitor` |
+| `walmart-price-tracker` | C+A | `price-tracking` | oui | `walmart-price-tracker` |
 
 ★ module mis en avant dans l'interface.
 

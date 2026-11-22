@@ -4,7 +4,69 @@
 --        et les modules Nexscope (données réelles, jamais simulées).
 -- ============================================================================
 
--- ───────────────── Prix effectif d'une variante ─────────────────────
+-- ══════════════ Vues publiques du catalogue ═════════════════════════
+--
+--  Les tables `products` et `product_variants` portent des données
+--  d'exploitation — coût d'achat, logistique, part publicitaire, taux de
+--  retour, fournisseur. Postgres ne sait pas restreindre la lecture
+--  colonne par colonne via RLS : leur lecture est donc réservée à l'équipe
+--  (voir 0008), et la boutique passe par ces vues, qui n'exposent QUE des
+--  colonnes publiables.
+--
+--  Ces vues sont volontairement en `security definer` (le défaut) : c'est
+--  ce qui leur permet de lire la table pour un visiteur anonyme, tout en
+--  filtrant elles-mêmes sur les produits réellement publiés.
+
+create or replace view public.catalog_products as
+  select id, slug, name, subtitle, description, story, care_guide, composition,
+         brand, status, category_id,
+         base_price, compare_at_price, currency,
+         weight_grams, lead_time_days,
+         seo_title, seo_description, tags, is_featured,
+         published_at, created_at, updated_at
+    from public.products
+   where status = 'active';
+
+comment on view public.catalog_products is
+  'Catalogue publié, colonnes publiables uniquement. Les coûts et la marge '
+  'ne figurent pas ici : ils sont réservés à l''équipe.';
+
+create or replace view public.catalog_variants as
+  select v.id, v.product_id, v.sku, v.barcode, v.title,
+         coalesce(v.price, p.base_price)                   as price,
+         coalesce(v.compare_at_price, p.compare_at_price)   as compare_at_price,
+         v.weight_grams, v.position, v.is_active,
+         p.currency
+    from public.product_variants v
+    join public.products p on p.id = v.product_id
+   where v.is_active and p.status = 'active';
+
+comment on view public.catalog_variants is
+  'Variantes des produits publiés, sans coût d''achat.';
+
+-- Prix effectif pour le panier et le paiement, sans donnée de coût.
+create or replace view public.catalog_pricing as
+  select v.id                                  as variant_id,
+         v.product_id,
+         v.sku,
+         v.title                               as variant_title,
+         p.name                                as product_name,
+         p.slug                                as product_slug,
+         coalesce(v.price, p.base_price)       as price,
+         coalesce(v.compare_at_price, p.compare_at_price) as compare_at_price,
+         p.currency,
+         p.status,
+         p.category_id
+    from public.product_variants v
+    join public.products p on p.id = v.product_id
+   where v.is_active and p.status = 'active';
+
+comment on view public.catalog_pricing is
+  'Prix effectif des variantes vendables. Utilisée par le panier et le '
+  'paiement ; ne contient aucun coût.';
+
+-- ───────────────── Prix effectif d'une variante (équipe) ─────────────
+--  Inclut le coût d'achat : réservée à l'équipe par `security_invoker`.
 create or replace view public.variant_pricing as
   select v.id                                   as variant_id,
          v.product_id,

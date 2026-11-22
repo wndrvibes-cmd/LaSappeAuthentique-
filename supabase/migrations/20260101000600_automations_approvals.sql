@@ -157,8 +157,12 @@ begin
     raise exception 'La demande doit être approuvée avant application (statut actuel : %)', v_req.status;
   end if;
   if v_req.expires_at < now() then
-    update public.approval_requests set status = 'expired' where id = p_approval_id;
-    raise exception 'Cette demande a expiré';
+    -- On refuse, sans tenter de marquer la demande ici : l'exception annule
+    -- la transaction, donc toute écriture faite avant serait perdue. Le
+    -- balayage des demandes périmées est assuré par expire_stale_approvals(),
+    -- appelée par les automatisations.
+    raise exception 'Cette demande a expiré le %',
+      to_char(v_req.expires_at, 'DD/MM/YYYY à HH24:MI');
   end if;
 
   if v_req.action_type in ('price_change','bulk_price_change') then
@@ -237,3 +241,30 @@ end $$;
 
 revoke all on function public.apply_approval(uuid, text) from public, anon;
 grant execute on function public.apply_approval(uuid, text) to authenticated;
+
+-- ════════════════════════════════════════════════════════════════════
+--  Balayage des demandes périmées
+--
+--  `apply_approval()` refuse une demande expirée mais ne peut pas changer
+--  son statut : son exception annulerait l'écriture. Cette fonction fait
+--  donc le ménage. Elle est appelée par les automatisations et peut être
+--  lancée à la main.
+-- ════════════════════════════════════════════════════════════════════
+create or replace function public.expire_stale_approvals() returns integer
+language plpgsql security definer set search_path = public as $$
+declare v_count integer;
+begin
+  update public.approval_requests
+     set status = 'expired'
+   where status in ('pending', 'approved')
+     and expires_at < now();
+  get diagnostics v_count = row_count;
+  return v_count;
+end $$;
+
+revoke all on function public.expire_stale_approvals() from public, anon;
+grant execute on function public.expire_stale_approvals() to authenticated;
+
+comment on function public.expire_stale_approvals() is
+  'Marque comme expirées les demandes dont la date limite est passée. '
+  'Appelée par automation-tick ; renvoie le nombre de demandes traitées.';

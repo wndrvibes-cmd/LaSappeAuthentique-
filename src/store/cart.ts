@@ -78,7 +78,7 @@ async function fetchLines(cartId: string): Promise<CartLine[]> {
 
   const variantIds = items.map((i) => i.variant_id);
   const [{ data: pricing }, { data: availability }, { data: images }] = await Promise.all([
-    supabase.from('variant_pricing').select('*').in('variant_id', variantIds),
+    supabase.from('catalog_pricing').select('*').in('variant_id', variantIds),
     supabase.from('variant_availability').select('variant_id, available').in('variant_id', variantIds),
     supabase.from('product_images').select('product_id, storage_path, position').order('position'),
   ]);

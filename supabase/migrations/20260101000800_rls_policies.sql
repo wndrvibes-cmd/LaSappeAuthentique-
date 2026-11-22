@@ -23,7 +23,15 @@ begin
 end $$;
 
 -- Le propriétaire des vues applique les droits des tables sous-jacentes
-alter view public.variant_availability set (security_invoker = on);
+--  `variant_availability` reste en security definer : la disponibilité est une
+--  information de vente légitime (« plus que 2 pièces »), et la vue ne contient
+--  aucune donnée de coût.
+alter view public.variant_availability set (security_invoker = off);
+grant select on public.variant_availability to anon, authenticated;
+
+--  Les vues suivantes contiennent des coûts, des marges ou du chiffre
+--  d'affaires : elles restent en `security_invoker`, donc soumises au RLS
+--  de `products` et `product_variants` — réservé à l'équipe.
 alter view public.variant_pricing      set (security_invoker = on);
 alter view public.variant_margins      set (security_invoker = on);
 alter view public.kpi_daily            set (security_invoker = on);
@@ -40,18 +48,43 @@ create policy "categories gérées par l'équipe"
   on public.categories for all to authenticated
   using (public.is_staff()) with check (public.is_staff());
 
-create policy "produits actifs visibles publiquement"
-  on public.products for select
-  using (status = 'active' or public.is_staff());
-create policy "produits gérés par l'équipe"
+--  ⚠️ POINT DE SÉCURITÉ CENTRAL
+--  La table `products` contient le coût d'achat, la logistique entrante, la
+--  part publicitaire, le taux de retour et le fournisseur. RLS ne sait pas
+--  restreindre la lecture colonne par colonne : si la table était lisible
+--  publiquement, n'importe qui — y compris un concurrent créant un compte en
+--  trente secondes — pourrait lire vos coûts et reconstituer vos marges.
+--
+--  La table est donc RÉSERVÉE À L'ÉQUIPE, et la boutique lit la vue
+--  `catalog_products`, qui n'expose que des colonnes publiables.
+create policy "produits réservés à l'équipe"
   on public.products for all to authenticated
   using (public.is_staff()) with check (public.is_staff());
+
+--  Même raisonnement pour les variantes, qui portent `cost_price`.
+--  La boutique lit `catalog_variants` et `catalog_pricing`.
+
+-- Un produit est-il publié ? Fonction `security definer`, afin que les
+-- politiques des tables liées (options, images) restent évaluables par un
+-- visiteur anonyme sans ouvrir `products` à la lecture publique.
+create or replace function public.product_is_public(p_product_id uuid)
+returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (
+    select 1 from public.products
+     where id = p_product_id and status = 'active'
+  );
+$$;
+
+grant execute on function public.product_is_public(uuid) to anon, authenticated;
+
+grant select on public.catalog_products, public.catalog_variants,
+                public.catalog_pricing to anon, authenticated;
 
 -- Options, valeurs, variantes, images : visibles si le produit l'est
 create policy "options visibles avec le produit"
   on public.product_options for select
-  using (exists (select 1 from public.products p
-                  where p.id = product_id and (p.status = 'active' or public.is_staff())));
+  using (public.product_is_public(product_id) or public.is_staff());
 create policy "options gérées par l'équipe"
   on public.product_options for all to authenticated
   using (public.is_staff()) with check (public.is_staff());
@@ -59,17 +92,13 @@ create policy "options gérées par l'équipe"
 create policy "valeurs d'options visibles"
   on public.product_option_values for select
   using (exists (select 1 from public.product_options o
-                  join public.products p on p.id = o.product_id
-                 where o.id = option_id and (p.status = 'active' or public.is_staff())));
+                  where o.id = option_id
+                    and (public.product_is_public(o.product_id) or public.is_staff())));
 create policy "valeurs d'options gérées par l'équipe"
   on public.product_option_values for all to authenticated
   using (public.is_staff()) with check (public.is_staff());
 
-create policy "variantes visibles avec le produit"
-  on public.product_variants for select
-  using (exists (select 1 from public.products p
-                  where p.id = product_id and (p.status = 'active' or public.is_staff())));
-create policy "variantes gérées par l'équipe"
+create policy "variantes réservées à l'équipe"
   on public.product_variants for all to authenticated
   using (public.is_staff()) with check (public.is_staff());
 
@@ -81,8 +110,7 @@ create policy "liaisons variantes gérées par l'équipe"
 
 create policy "images visibles avec le produit"
   on public.product_images for select
-  using (exists (select 1 from public.products p
-                  where p.id = product_id and (p.status = 'active' or public.is_staff())));
+  using (public.product_is_public(product_id) or public.is_staff());
 create policy "images gérées par l'équipe"
   on public.product_images for all to authenticated
   using (public.is_staff()) with check (public.is_staff());

@@ -3,7 +3,7 @@
  * Source : https://github.com/nexscope-ai/eCommerce-Skills
  * Régénérer avec : npm run nexscope:sync
  *
- * 162 modules · 55 dotés d'un moteur de calcul déterministe
+ * 162 modules · 60 dotés d'un moteur de calcul déterministe
  */
 import type { NexscopeSkillMeta } from './types';
 
@@ -13,7 +13,7 @@ export const NEXSCOPE_SKILL_COUNT = 162;
 export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   {
     "slug": "sales-tracking-tool",
-    "name": "Sales Tracking Tool",
+    "name": "sales-tracking-tool",
     "category": "Analytique & Pilotage",
     "platform": null,
     "emoji": "📉",
@@ -33,7 +33,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Conversion & Expérience",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Systematic CRO for e-commerce stores. Audit conversion funnels, identify drop-off points, implement fixes, and run experiments to increase revenue per visitor across all platforms.",
     "source_path": "conversion-rate-optimization",
     "execution_mode": "hybrid",
     "engine_key": "funnel-cro",
@@ -45,7 +45,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "ecommerce-growth-strategy",
-    "name": "Ecommerce Growth Strategy",
+    "name": "ecommerce-growth-strategy",
     "category": "Fidélisation & Relation client",
     "platform": null,
     "emoji": "🚀",
@@ -61,10 +61,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "profit-margin-calculator-shopify",
-    "name": "Profit Margin Calculator Shopify",
+    "name": "profit-margin-calculator-shopify",
     "category": "Prix & Rentabilité",
     "platform": "shopify",
-    "emoji": null,
+    "emoji": "💰",
     "description": "Shopify/DTC profit margin calculator for sellers. Calculate cost breakdowns including ad spend, CAC, payment processing fees, and 3PL costs. Includes LTV/CAC analysis and DTC-specific benchmarks. No API key required.",
     "source_path": "profit-margin-calculator/profit-margin-calculator-shopify",
     "execution_mode": "hybrid",
@@ -77,7 +77,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "dropshipping-product-research",
-    "name": "Dropshipping Product Research",
+    "name": "dropshipping-product-research",
     "category": "Recherche produit & Opportunités",
     "platform": null,
     "emoji": "📦",
@@ -93,11 +93,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "shopify-seo",
-    "name": "Shopify Seo",
+    "name": "Shopify SEO",
     "category": "SEO & Visibilité",
     "platform": "shopify",
     "emoji": null,
-    "description": "",
+    "description": "Comprehensive Shopify SEO optimization guide. Technical SEO, on-page optimization, collection pages, blog strategy, site architecture, and link building for Shopify stores.",
     "source_path": "shopify-seo",
     "execution_mode": "hybrid",
     "engine_key": "listing-seo",
@@ -109,7 +109,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "cross-border-ecommerce",
-    "name": "Cross Border Ecommerce",
+    "name": "cross-border-ecommerce",
     "category": "Stocks & Logistique",
     "platform": null,
     "emoji": "✈️",
@@ -124,11 +124,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 7
   },
   {
+    "slug": "inventory-tracking-software",
+    "name": "Inventory Tracking Software",
+    "category": "Stocks & Logistique",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered inventory tracking and monitoring skill for e-commerce businesses. Designs inventory monitoring systems, low-stock alerts, reorder point calculations, and multi-channel sync strategies.",
+    "source_path": "inventory-tracking-software",
+    "execution_mode": "hybrid",
+    "engine_key": "inventory-forecast",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": true,
+    "position": 8
+  },
+  {
     "slug": "supply-chain-optimization-shopify",
-    "name": "Supply Chain Optimization Shopify",
+    "name": "supply-chain-optimization-shopify",
     "category": "Stocks & Logistique",
     "platform": "shopify",
-    "emoji": null,
+    "emoji": "📦",
     "description": "Supply Chain Bottleneck Analyzer for Shopify/DTC stores. Diagnose cash flow, inventory, shipping costs, and customer acquisition efficiency. Includes CAC/LTV analysis, 3PL cost optimization, and ad spend benchmarks. No API key required for basic analysis.",
     "source_path": "supply-chain-optimization/supply-chain-optimization-shopify",
     "execution_mode": "hybrid",
@@ -137,11 +153,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 8
+    "position": 9
   },
   {
     "slug": "competitor-price-tracker",
-    "name": "Competitor Price Tracker",
+    "name": "competitor-price-tracker",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": "📊",
@@ -153,11 +169,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Relevés de prix concurrents : saisie manuelle et import CSV disponibles sans clé. Pour une collecte automatique, connecter une source de données marché (API Nexscope ou équivalent).",
     "is_core": true,
-    "position": 9
+    "position": 10
   },
   {
     "slug": "dynamic-pricing-ecommerce",
-    "name": "Dynamic Pricing Ecommerce",
+    "name": "dynamic-pricing-ecommerce",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": null,
@@ -169,11 +185,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 10
+    "position": 11
   },
   {
     "slug": "review-monitoring",
-    "name": "Review Monitoring",
+    "name": "review-monitoring",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": "👁️",
@@ -185,15 +201,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Avis externes : les avis de votre boutique sont analysés nativement. Pour les avis d'une marketplace, importer un export CSV.",
     "is_core": true,
-    "position": 11
+    "position": 12
   },
   {
     "slug": "ecommerce-customer-retention",
-    "name": "Ecommerce Customer Retention",
+    "name": "E-Commerce Customer Retention",
     "category": "Fidélisation & Relation client",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Increase customer retention and repeat purchases for e-commerce businesses. Email flows, loyalty programs, subscription models, customer segmentation, and win-back strategies.",
     "source_path": "ecommerce-customer-retention",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -201,11 +217,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 12
+    "position": 13
   },
   {
     "slug": "ecommerce-email-marketing-builder",
-    "name": "Ecommerce Email Marketing Builder",
+    "name": "ecommerce-email-marketing-builder",
     "category": "Fidélisation & Relation client",
     "platform": null,
     "emoji": "📧",
@@ -217,14 +233,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 13
+    "position": 14
   },
   {
     "slug": "ecommerce-ppc-strategy-planner",
-    "name": "Ecommerce Ppc Strategy Planner",
+    "name": "ecommerce-ppc-strategy-planner",
     "category": "Marketing & Acquisition",
     "platform": null,
-    "emoji": null,
+    "emoji": "📊",
     "description": "Cross-platform PPC strategy planner for ecommerce businesses. Analyzes your product and margins, recommends the right advertising platforms (Google Ads, Meta Ads, TikTok Ads), calculates ROAS targets, allocates budget across channels, and generates platform-specific campaign briefs with ad copy and creative direction. Two modes: (A) Build — design a multi-platform ad strategy from scratch, (B) Optimize — audit existing cross-platform campaigns and reallocate budget. Works for Shopify, WooCommerce, standalone stores, and marketplace sellers expanding to external traffic. No API key required.",
     "source_path": "ecommerce-ppc-strategy-planner",
     "execution_mode": "reasoning",
@@ -233,7 +249,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": true,
-    "position": 14
+    "position": 15
   },
   {
     "slug": "influencer-outreach",
@@ -241,7 +257,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Marketing & Acquisition",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Find, contact, and manage influencer partnerships for e-commerce brands. Outreach templates, negotiation tactics, contract frameworks, and relationship management across Instagram, TikTok, YouTube, and more.",
     "source_path": "influencer-outreach",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -249,14 +265,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 15
+    "position": 16
   },
   {
     "slug": "brand-monitoring",
-    "name": "Brand Monitoring",
+    "name": "brand-monitoring",
     "category": "Veille concurrentielle",
     "platform": null,
-    "emoji": null,
+    "emoji": "📡",
     "description": "Brand monitoring tool for tracking mentions across social media platforms. Monitor Reddit, Google News, YouTube, and DuckDuckGo for brand mentions. Includes sentiment analysis, trend tracking, crisis detection, and competitor comparison. No API key required for basic monitoring.",
     "source_path": "brand-monitoring",
     "execution_mode": "reasoning",
@@ -265,14 +281,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": true,
-    "position": 16
+    "position": 17
   },
   {
     "slug": "ecommerce-competitor-analysis",
-    "name": "Ecommerce Competitor Analysis",
+    "name": "ecommerce-competitor-analysis",
     "category": "Veille concurrentielle",
     "platform": null,
-    "emoji": null,
+    "emoji": "🔍",
     "description": "Cross-platform ecommerce competitor analysis and strategic intelligence. Multi-channel presence evaluation, strategy assessment, positioning analysis, and competitive benchmarking. Use when the user asks about competitor analysis, competitive research, market analysis, or competitive intelligence across platforms.",
     "source_path": "ecommerce-competitor-analysis",
     "execution_mode": "reasoning",
@@ -281,11 +297,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 17
+    "position": 18
   },
   {
     "slug": "ecommerce-marketing-strategy-builder",
-    "name": "Ecommerce Marketing Strategy Builder",
+    "name": "ecommerce-marketing-strategy-builder",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": "🎯",
@@ -297,14 +313,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 18
+    "position": 19
   },
   {
     "slug": "product-description-generator",
-    "name": "Product Description Generator",
+    "name": "product-description-generator",
     "category": "Veille concurrentielle",
     "platform": null,
-    "emoji": null,
+    "emoji": "📝",
     "description": "E-commerce product description generator for any platform. Generates optimized titles, bullet points, descriptions, and backend keywords using competitor research + keyword scoring + FABE copywriting. Two modes: (A) Create — generate listing from product specs with optional competitor analysis, (B) Optimize — improve existing listing with keyword gap analysis. Supports Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop, Lazada, Shopee. No API key required. Use when: (1) writing a new product listing, (2) analyzing what makes competitors rank, (3) improving an underperforming listing.",
     "source_path": "product-description-generator",
     "execution_mode": "reasoning",
@@ -313,11 +329,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": true,
-    "position": 19
+    "position": 20
   },
   {
     "slug": "ecommerce-business-plan",
-    "name": "Ecommerce Business Plan",
+    "name": "ecommerce-business-plan",
     "category": "Analytique & Pilotage",
     "platform": null,
     "emoji": "📑",
@@ -329,7 +345,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 20
+    "position": 21
   },
   {
     "slug": "shopify-analytics-guide",
@@ -337,24 +353,8 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Analytique & Pilotage",
     "platform": "shopify",
     "emoji": null,
-    "description": "",
+    "description": "Master Shopify analytics and reporting. Understand key metrics, build custom reports, track customer behavior, and make data-driven decisions to grow your Shopify store.",
     "source_path": "shopify-analytics-guide",
-    "execution_mode": "hybrid",
-    "engine_key": "sales-analytics",
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 21
-  },
-  {
-    "slug": "tiktok-shop-analytics",
-    "name": "Tiktok Shop Analytics",
-    "category": "Contenu & Fiches produits",
-    "platform": "tiktok-shop",
-    "emoji": null,
-    "description": "TikTok Shop analytics and performance tracking. Video metrics, live selling data, affiliate performance, advertising analytics, and business intelligence. Use when the user asks about TikTok Shop analytics, performance tracking, metrics analysis, or data-driven optimization.",
-    "source_path": "tiktok-shop-analytics",
     "execution_mode": "hybrid",
     "engine_key": "sales-analytics",
     "has_scripts": false,
@@ -364,8 +364,24 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 22
   },
   {
+    "slug": "tiktok-shop-analytics",
+    "name": "tiktok-shop-analytics",
+    "category": "Contenu & Fiches produits",
+    "platform": "tiktok-shop",
+    "emoji": "📊",
+    "description": "TikTok Shop analytics and performance tracking. Video metrics, live selling data, affiliate performance, advertising analytics, and business intelligence. Use when the user asks about TikTok Shop analytics, performance tracking, metrics analysis, or data-driven optimization.",
+    "source_path": "tiktok-shop-analytics",
+    "execution_mode": "hybrid",
+    "engine_key": "sales-analytics",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 23
+  },
+  {
     "slug": "tiktok-shop-conversion",
-    "name": "Tiktok Shop Conversion",
+    "name": "tiktok-shop-conversion",
     "category": "Contenu & Fiches produits",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -377,27 +393,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 23
-  },
-  {
-    "slug": "ecommerce-ab-testing",
-    "name": "Ecommerce Ab Testing",
-    "category": "Conversion & Expérience",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "ecommerce-ab-testing",
-    "execution_mode": "hybrid",
-    "engine_key": "funnel-cro",
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
     "position": 24
   },
   {
     "slug": "ecommerce-checkout-optimization",
-    "name": "Ecommerce Checkout Optimization",
+    "name": "ecommerce-checkout-optimization",
     "category": "Conversion & Expérience",
     "platform": null,
     "emoji": "💳",
@@ -413,7 +413,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "etsy-shop-analytics",
-    "name": "Etsy Shop Analytics",
+    "name": "etsy-shop-analytics",
     "category": "Conversion & Expérience",
     "platform": "etsy",
     "emoji": null,
@@ -428,13 +428,13 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 26
   },
   {
-    "slug": "shopify-ab-testing",
-    "name": "Shopify Ab Testing",
+    "slug": "shopify-conversion-optimization",
+    "name": "Shopify Conversion Optimization",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
-    "description": "",
-    "source_path": "shopify-ab-testing",
+    "description": "Increase Shopify store conversion rates with data-driven optimization. Product pages, checkout flow, trust signals, page speed, mobile UX, and A/B testing for higher revenue per visitor.",
+    "source_path": "shopify-conversion-optimization",
     "execution_mode": "hybrid",
     "engine_key": "funnel-cro",
     "has_scripts": false,
@@ -444,15 +444,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 27
   },
   {
-    "slug": "shopify-conversion-optimization",
-    "name": "Shopify Conversion Optimization",
-    "category": "Conversion & Expérience",
-    "platform": "shopify",
+    "slug": "customer-feedback-analysis",
+    "name": "Customer Feedback Analysis",
+    "category": "Fidélisation & Relation client",
+    "platform": null,
     "emoji": null,
-    "description": "",
-    "source_path": "shopify-conversion-optimization",
+    "description": "AI-powered customer feedback and review sentiment analysis skill. Extracts pain points, feature requests, and improvement priorities from customer reviews across e-commerce platforms.",
+    "source_path": "customer-feedback-analysis",
     "execution_mode": "hybrid",
-    "engine_key": "funnel-cro",
+    "engine_key": "review-analysis",
     "has_scripts": false,
     "requires_external_data": false,
     "external_data_note": null,
@@ -461,10 +461,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "ebay-review-checker",
-    "name": "Ebay Review Checker",
+    "name": "ebay-review-checker",
     "category": "Fidélisation & Relation client",
     "platform": "ebay",
-    "emoji": null,
+    "emoji": "🔍",
     "description": "eBay review and feedback authenticity analyzer. Detect fake reviews, suspicious seller feedback patterns, and buyer manipulation. Includes time clustering detection, content similarity analysis, and eBay-specific red flag identification. No API key required.",
     "source_path": "review-checker/ebay-review-checker",
     "execution_mode": "hybrid",
@@ -477,10 +477,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "product-review-analysis",
-    "name": "Product Review Analysis",
+    "name": "product-review-analysis",
     "category": "Fidélisation & Relation client",
     "platform": null,
-    "emoji": null,
+    "emoji": "⭐",
     "description": "Product review analysis and customer feedback intelligence. Pain point identification, praise pattern analysis, feature request extraction, sentiment analysis, and product improvement insights. Use when the user asks about review analysis, customer feedback, product reviews, or sentiment analysis.",
     "source_path": "product-review-analysis",
     "execution_mode": "hybrid",
@@ -493,7 +493,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "shopify-cart-abandonment",
-    "name": "Shopify Cart Abandonment",
+    "name": "shopify-cart-abandonment",
     "category": "Fidélisation & Relation client",
     "platform": "shopify",
     "emoji": null,
@@ -509,10 +509,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "tiktok-shop-cross-border",
-    "name": "Tiktok Shop Cross Border",
+    "name": "tiktok-shop-cross-border",
     "category": "International & Conformité",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🌍",
     "description": "Cross-border selling on TikTok Shop. Market selection, logistics setup, localization strategy, compliance requirements, and international expansion. Use when the user asks about TikTok Shop international selling, cross-border ecommerce, global expansion, or selling in multiple countries.",
     "source_path": "tiktok-shop-cross-border",
     "execution_mode": "hybrid",
@@ -525,10 +525,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "supply-chain-optimization-tiktok",
-    "name": "Supply Chain Optimization Tiktok",
+    "name": "supply-chain-optimization-tiktok",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "📦",
     "description": "Supply Chain Bottleneck Analyzer for TikTok Shop sellers. Diagnose cash flow, inventory turnover, affiliate commissions, and return rates. Includes FBT cost analysis, influencer payout optimization, and viral product lifecycle management. No API key required for basic analysis.",
     "source_path": "supply-chain-optimization/supply-chain-optimization-tiktok",
     "execution_mode": "hybrid",
@@ -541,10 +541,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "amazon-review-checker",
-    "name": "Amazon Review Checker",
+    "name": "amazon-review-checker",
     "category": "Marque & Réputation",
     "platform": "amazon",
-    "emoji": null,
+    "emoji": "🔍",
     "description": "Amazon review authenticity analyzer. Detect fake reviews, suspicious patterns, and rating manipulation. Includes time clustering detection, content similarity analysis, rating distribution checks, and verified purchase validation. Progressive analysis with L1-L4 depth levels. No API key required.",
     "source_path": "review-checker/amazon-review-checker",
     "execution_mode": "hybrid",
@@ -557,10 +557,10 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
   },
   {
     "slug": "walmart-review-checker",
-    "name": "Walmart Review Checker",
+    "name": "walmart-review-checker",
     "category": "Marque & Réputation",
     "platform": "walmart",
-    "emoji": null,
+    "emoji": "🔍",
     "description": "Walmart review authenticity analyzer. Detect fake reviews, suspicious patterns, and rating manipulation. Includes WFS verified badge analysis, incentivized review detection, and Walmart-specific red flag identification. No API key required.",
     "source_path": "review-checker/walmart-review-checker",
     "execution_mode": "hybrid",
@@ -572,8 +572,40 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 35
   },
   {
+    "slug": "ecommerce-ab-testing",
+    "name": "E-Commerce A/B Testing",
+    "category": "Prix & Rentabilité",
+    "platform": null,
+    "emoji": null,
+    "description": "Master A/B testing for e-commerce across all platforms. Test product pages, pricing, ads, emails, and checkout flows with statistical rigor to maximize conversion and revenue.",
+    "source_path": "ecommerce-ab-testing",
+    "execution_mode": "hybrid",
+    "engine_key": "funnel-cro",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 36
+  },
+  {
+    "slug": "minimum-advertised-price",
+    "name": "Minimum Advertised Price",
+    "category": "Prix & Rentabilité",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered MAP (Minimum Advertised Price) policy and enforcement skill. Helps brands create MAP policies, monitor violations across channels, manage dealer compliance, and design enforcement workflows.",
+    "source_path": "minimum-advertised-price",
+    "execution_mode": "hybrid",
+    "engine_key": "dynamic-pricing",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 37
+  },
+  {
     "slug": "price-optimization-tool",
-    "name": "Price Optimization Tool",
+    "name": "price-optimization-tool",
     "category": "Prix & Rentabilité",
     "platform": null,
     "emoji": null,
@@ -585,48 +617,16 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 36
-  },
-  {
-    "slug": "profit-margin-calculator-amazon",
-    "name": "Profit Margin Calculator Amazon",
-    "category": "Prix & Rentabilité",
-    "platform": "amazon",
-    "emoji": null,
-    "description": "Amazon profit margin calculator for sellers. Calculate cost breakdowns, profit margins, break-even points, and get pricing recommendations. Supports single product analysis and batch calculations. Input product cost, shipping, FBA fees, and get instant profitability analysis. No API key required. Use when: (1) evaluating new product profitability before sourcing, (2) diagnosing existing product margins, (3) adjusting pricing strategy, (4) analyzing multiple SKUs at once.",
-    "source_path": "profit-margin-calculator/profit-margin-calculator-amazon",
-    "execution_mode": "hybrid",
-    "engine_key": "profit-margin",
-    "has_scripts": true,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 37
-  },
-  {
-    "slug": "profit-margin-calculator-tiktok",
-    "name": "Profit Margin Calculator Tiktok",
-    "category": "Prix & Rentabilité",
-    "platform": "tiktok-shop",
-    "emoji": null,
-    "description": "TikTok Shop profit margin calculator for sellers. Calculate cost breakdowns including affiliate commissions, platform fees, and FBT costs. Includes return rate analysis for impulse buying patterns. No API key required.",
-    "source_path": "profit-margin-calculator/profit-margin-calculator-tiktok",
-    "execution_mode": "hybrid",
-    "engine_key": "profit-margin",
-    "has_scripts": true,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
     "position": 38
   },
   {
-    "slug": "profit-margin-calculator-walmart",
-    "name": "Profit Margin Calculator Walmart",
+    "slug": "profit-margin-calculator-amazon",
+    "name": "profit-margin-calculator-amazon",
     "category": "Prix & Rentabilité",
-    "platform": "walmart",
-    "emoji": null,
-    "description": "Walmart profit margin calculator for sellers. Calculate cost breakdowns including WFS fulfillment, storage fees, and referral fees. Includes comparison with Amazon FBA and lower competition advantage analysis. No API key required.",
-    "source_path": "profit-margin-calculator/profit-margin-calculator-walmart",
+    "platform": "amazon",
+    "emoji": "💰",
+    "description": "Amazon profit margin calculator for sellers. Calculate cost breakdowns, profit margins, break-even points, and get pricing recommendations. Supports single product analysis and batch calculations. Input product cost, shipping, FBA fees, and get instant profitability analysis. No API key required. Use when: (1) evaluating new product profitability before sourcing, (2) diagnosing existing product margins, (3) adjusting pricing strategy, (4) analyzing multiple SKUs at once.",
+    "source_path": "profit-margin-calculator/profit-margin-calculator-amazon",
     "execution_mode": "hybrid",
     "engine_key": "profit-margin",
     "has_scripts": true,
@@ -636,8 +636,56 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 39
   },
   {
+    "slug": "profit-margin-calculator-tiktok",
+    "name": "profit-margin-calculator-tiktok",
+    "category": "Prix & Rentabilité",
+    "platform": "tiktok-shop",
+    "emoji": "💰",
+    "description": "TikTok Shop profit margin calculator for sellers. Calculate cost breakdowns including affiliate commissions, platform fees, and FBT costs. Includes return rate analysis for impulse buying patterns. No API key required.",
+    "source_path": "profit-margin-calculator/profit-margin-calculator-tiktok",
+    "execution_mode": "hybrid",
+    "engine_key": "profit-margin",
+    "has_scripts": true,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 40
+  },
+  {
+    "slug": "profit-margin-calculator-walmart",
+    "name": "profit-margin-calculator-walmart",
+    "category": "Prix & Rentabilité",
+    "platform": "walmart",
+    "emoji": "💰",
+    "description": "Walmart profit margin calculator for sellers. Calculate cost breakdowns including WFS fulfillment, storage fees, and referral fees. Includes comparison with Amazon FBA and lower competition advantage analysis. No API key required.",
+    "source_path": "profit-margin-calculator/profit-margin-calculator-walmart",
+    "execution_mode": "hybrid",
+    "engine_key": "profit-margin",
+    "has_scripts": true,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 41
+  },
+  {
+    "slug": "shopify-ab-testing",
+    "name": "Shopify A/B Testing",
+    "category": "Prix & Rentabilité",
+    "platform": "shopify",
+    "emoji": null,
+    "description": "Run data-driven A/B tests on your Shopify store. Test product pages, pricing, images, copy, checkout flow, and marketing campaigns with proper statistical methodology.",
+    "source_path": "shopify-ab-testing",
+    "execution_mode": "hybrid",
+    "engine_key": "funnel-cro",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 42
+  },
+  {
     "slug": "shopify-international",
-    "name": "Shopify International",
+    "name": "shopify-international",
     "category": "Prix & Rentabilité",
     "platform": "shopify",
     "emoji": null,
@@ -649,15 +697,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 40
+    "position": 43
   },
   {
     "slug": "ebay-product-research",
-    "name": "Ebay Product Research",
+    "name": "eBay Product Research",
     "category": "Recherche produit & Opportunités",
     "platform": "ebay",
     "emoji": null,
-    "description": "",
+    "description": "Research profitable products to sell on eBay. Analyze completed listings, sell-through rates, average selling prices, competition density, and seasonal demand patterns.",
     "source_path": "ebay-product-research",
     "execution_mode": "hybrid",
     "engine_key": "opportunity-score",
@@ -665,11 +713,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 41
+    "position": 44
   },
   {
     "slug": "market-gap-analysis",
-    "name": "Market Gap Analysis",
+    "name": "market-gap-analysis",
     "category": "Recherche produit & Opportunités",
     "platform": null,
     "emoji": "🎯",
@@ -681,64 +729,16 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 42
-  },
-  {
-    "slug": "product-differentiation-amazon",
-    "name": "Product Differentiation Amazon",
-    "category": "Recherche produit & Opportunités",
-    "platform": "amazon",
-    "emoji": null,
-    "description": "Amazon product differentiation strategy tool. Analyze competitor weaknesses, extract pain points from negative reviews, identify unique selling points from positive reviews, and generate actionable differentiation strategies. Progressive L1-L4 analysis depth. No API key required.",
-    "source_path": "product-differentiation/product-differentiation-amazon",
-    "execution_mode": "hybrid",
-    "engine_key": "differentiation",
-    "has_scripts": true,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 43
-  },
-  {
-    "slug": "product-differentiation-ebay",
-    "name": "Product Differentiation Ebay",
-    "category": "Recherche produit & Opportunités",
-    "platform": "ebay",
-    "emoji": null,
-    "description": "eBay product differentiation strategy tool. Analyze competitor weaknesses, extract pain points from negative feedback, identify unique selling points, and generate actionable differentiation strategies. Includes eBay-specific seller feedback analysis. No API key required.",
-    "source_path": "product-differentiation/product-differentiation-ebay",
-    "execution_mode": "hybrid",
-    "engine_key": "differentiation",
-    "has_scripts": true,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 44
-  },
-  {
-    "slug": "product-differentiation-shopify",
-    "name": "Product Differentiation Shopify",
-    "category": "Recherche produit & Opportunités",
-    "platform": "shopify",
-    "emoji": null,
-    "description": "Shopify/DTC product differentiation strategy tool. Analyze competitor stores, extract pain points from reviews, identify brand positioning opportunities, and generate actionable differentiation strategies. Includes DTC-specific metrics like CAC, LTV, and brand story analysis. No API key required.",
-    "source_path": "product-differentiation/product-differentiation-shopify",
-    "execution_mode": "hybrid",
-    "engine_key": "differentiation",
-    "has_scripts": true,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
     "position": 45
   },
   {
-    "slug": "product-differentiation-tiktok",
-    "name": "Product Differentiation Tiktok",
+    "slug": "product-differentiation-amazon",
+    "name": "product-differentiation-amazon",
     "category": "Recherche produit & Opportunités",
-    "platform": "tiktok-shop",
-    "emoji": null,
-    "description": "TikTok Shop product differentiation strategy tool. Analyze viral product trends, competitor affiliate strategies, content performance, and identify differentiation opportunities. Includes TikTok-specific metrics like engagement rate, viral potential, and creator collaboration insights. No API key required.",
-    "source_path": "product-differentiation/product-differentiation-tiktok",
+    "platform": "amazon",
+    "emoji": "🎯",
+    "description": "Amazon product differentiation strategy tool. Analyze competitor weaknesses, extract pain points from negative reviews, identify unique selling points from positive reviews, and generate actionable differentiation strategies. Progressive L1-L4 analysis depth. No API key required.",
+    "source_path": "product-differentiation/product-differentiation-amazon",
     "execution_mode": "hybrid",
     "engine_key": "differentiation",
     "has_scripts": true,
@@ -748,8 +748,56 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 46
   },
   {
+    "slug": "product-differentiation-ebay",
+    "name": "product-differentiation-ebay",
+    "category": "Recherche produit & Opportunités",
+    "platform": "ebay",
+    "emoji": "🎯",
+    "description": "eBay product differentiation strategy tool. Analyze competitor weaknesses, extract pain points from negative feedback, identify unique selling points, and generate actionable differentiation strategies. Includes eBay-specific seller feedback analysis. No API key required.",
+    "source_path": "product-differentiation/product-differentiation-ebay",
+    "execution_mode": "hybrid",
+    "engine_key": "differentiation",
+    "has_scripts": true,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 47
+  },
+  {
+    "slug": "product-differentiation-shopify",
+    "name": "product-differentiation-shopify",
+    "category": "Recherche produit & Opportunités",
+    "platform": "shopify",
+    "emoji": "🎯",
+    "description": "Shopify/DTC product differentiation strategy tool. Analyze competitor stores, extract pain points from reviews, identify brand positioning opportunities, and generate actionable differentiation strategies. Includes DTC-specific metrics like CAC, LTV, and brand story analysis. No API key required.",
+    "source_path": "product-differentiation/product-differentiation-shopify",
+    "execution_mode": "hybrid",
+    "engine_key": "differentiation",
+    "has_scripts": true,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 48
+  },
+  {
+    "slug": "product-differentiation-tiktok",
+    "name": "product-differentiation-tiktok",
+    "category": "Recherche produit & Opportunités",
+    "platform": "tiktok-shop",
+    "emoji": "🎯",
+    "description": "TikTok Shop product differentiation strategy tool. Analyze viral product trends, competitor affiliate strategies, content performance, and identify differentiation opportunities. Includes TikTok-specific metrics like engagement rate, viral potential, and creator collaboration insights. No API key required.",
+    "source_path": "product-differentiation/product-differentiation-tiktok",
+    "execution_mode": "hybrid",
+    "engine_key": "differentiation",
+    "has_scripts": true,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 49
+  },
+  {
     "slug": "tiktok-shop-product-research",
-    "name": "Tiktok Shop Product Research",
+    "name": "tiktok-shop-product-research",
     "category": "Recherche produit & Opportunités",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -761,11 +809,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 47
+    "position": 50
   },
   {
     "slug": "tiktok-shop-trending-products",
-    "name": "Tiktok Shop Trending Products",
+    "name": "tiktok-shop-trending-products",
     "category": "Recherche produit & Opportunités",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -777,15 +825,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Volumes de recherche et tendances : connecter une source de données mots-clés pour des chiffres réels. Sans clé, le module travaille sur vos propres données de recherche interne.",
     "is_core": false,
-    "position": 48
+    "position": 51
   },
   {
     "slug": "ebay-seo",
-    "name": "Ebay Seo",
+    "name": "eBay SEO",
     "category": "SEO & Visibilité",
     "platform": "ebay",
     "emoji": null,
-    "description": "",
+    "description": "Optimize eBay listings for Cassini search algorithm. Master item specifics, title optimization, category selection, and seller performance factors that drive search visibility.",
     "source_path": "ebay-seo",
     "execution_mode": "hybrid",
     "engine_key": "listing-seo",
@@ -793,14 +841,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 49
+    "position": 52
   },
   {
     "slug": "etsy-seo",
-    "name": "Etsy Seo",
+    "name": "etsy-seo",
     "category": "SEO & Visibilité",
     "platform": "etsy",
-    "emoji": null,
+    "emoji": "🔍",
     "description": "Etsy SEO analyzer and optimizer. Improve search visibility with title optimization, tag analysis, description scoring, and keyword research. Includes SEO scoring (0-100), long-tail keyword suggestions, and prioritized action plans. No API key required.",
     "source_path": "etsy-seo",
     "execution_mode": "hybrid",
@@ -809,11 +857,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 50
+    "position": 53
   },
   {
     "slug": "etsy-seo-tags",
-    "name": "Etsy Seo Tags",
+    "name": "etsy-seo-tags",
     "category": "SEO & Visibilité",
     "platform": "etsy",
     "emoji": null,
@@ -825,11 +873,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 51
+    "position": 54
   },
   {
     "slug": "product-page-seo",
-    "name": "Product Page Seo",
+    "name": "product-page-seo",
     "category": "SEO & Visibilité",
     "platform": null,
     "emoji": "🔎",
@@ -841,11 +889,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 52
+    "position": 55
   },
   {
     "slug": "product-title-optimization",
-    "name": "Product Title Optimization",
+    "name": "product-title-optimization",
     "category": "SEO & Visibilité",
     "platform": null,
     "emoji": "✏️",
@@ -857,14 +905,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 53
+    "position": 56
   },
   {
     "slug": "tiktok-shop-listing-optimization",
-    "name": "Tiktok Shop Listing Optimization",
+    "name": "tiktok-shop-listing-optimization",
     "category": "SEO & Visibilité",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "📝",
     "description": "TikTok Shop product listing optimization. Titles, descriptions, images, videos, attributes, and search optimization for maximum visibility and conversions. Use when the user asks about TikTok Shop listing optimization, product SEO, or improving product visibility on TikTok.",
     "source_path": "tiktok-shop-listing-optimization",
     "execution_mode": "hybrid",
@@ -873,11 +921,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 54
+    "position": 57
   },
   {
     "slug": "walmart-listing-optimization",
-    "name": "Walmart Listing Optimization",
+    "name": "walmart-listing-optimization",
     "category": "SEO & Visibilité",
     "platform": "walmart",
     "emoji": "🏪",
@@ -889,15 +937,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 55
+    "position": 58
   },
   {
     "slug": "woocommerce-seo",
-    "name": "Woocommerce Seo",
+    "name": "WooCommerce SEO",
     "category": "SEO & Visibilité",
     "platform": "woocommerce",
     "emoji": null,
-    "description": "",
+    "description": "Optimize WooCommerce stores for search engines. Covers technical SEO, product page optimization, schema markup, site speed, URL structure, and content strategy for organic traffic growth.",
     "source_path": "woocommerce-seo",
     "execution_mode": "hybrid",
     "engine_key": "listing-seo",
@@ -905,11 +953,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 56
+    "position": 59
+  },
+  {
+    "slug": "restock-alert",
+    "name": "Restock Alert",
+    "category": "Stocks & Logistique",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered restock alert and replenishment planning skill. Calculates optimal reorder points, safety stock levels, and stockout risk scores to prevent lost sales from inventory gaps.",
+    "source_path": "restock-alert",
+    "execution_mode": "hybrid",
+    "engine_key": "inventory-forecast",
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 60
   },
   {
     "slug": "shopify-inventory-management",
-    "name": "Shopify Inventory Management",
+    "name": "shopify-inventory-management",
     "category": "Stocks & Logistique",
     "platform": "shopify",
     "emoji": null,
@@ -921,11 +985,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 57
+    "position": 61
   },
   {
-    "slug": "supply-chain-optimization-amazon-lite",
-    "name": "Supply Chain Optimization Amazon Lite",
+    "slug": "supply-chain-optimization-amazon",
+    "name": "supply-chain-optimization-amazon-lite",
     "category": "Stocks & Logistique",
     "platform": "amazon",
     "emoji": null,
@@ -937,14 +1001,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 58
+    "position": 62
   },
   {
     "slug": "supply-chain-optimization-walmart",
-    "name": "Supply Chain Optimization Walmart",
+    "name": "supply-chain-optimization-walmart",
     "category": "Stocks & Logistique",
     "platform": "walmart",
-    "emoji": null,
+    "emoji": "📦",
     "description": "Supply Chain Bottleneck Analyzer for Walmart Marketplace sellers. Diagnose cash flow, inventory, WFS costs, and referral fees. Includes comparison with Amazon FBA, lower storage fee optimization, and Walmart Connect ad spend analysis. No API key required for basic analysis.",
     "source_path": "supply-chain-optimization/supply-chain-optimization-walmart",
     "execution_mode": "hybrid",
@@ -953,11 +1017,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 59
+    "position": 63
   },
   {
     "slug": "tiktok-shop-inventory",
-    "name": "Tiktok Shop Inventory",
+    "name": "tiktok-shop-inventory",
     "category": "Stocks & Logistique",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -969,14 +1033,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 60
+    "position": 64
   },
   {
     "slug": "warehouse-optimization",
-    "name": "Warehouse Optimization",
+    "name": "warehouse-optimization",
     "category": "Stocks & Logistique",
     "platform": null,
-    "emoji": null,
+    "emoji": "🏭",
     "description": "E-commerce warehouse and inventory optimization advisor. Analyzes inventory health, calculates safety stock and reorder points, performs ABC analysis, evaluates fulfillment costs, and provides actionable recommendations for improving efficiency. Supports all major fulfillment models: Self-fulfillment, Amazon FBA/FBM, Walmart WFS, 3PL, Shopify Fulfillment, TikTok Shop, Dropshipping, and Hybrid setups. No API key required. Use when: (1) reducing stockouts or overstock, (2) calculating safety stock levels, (3) optimizing warehouse costs, (4) improving Amazon IPI score, (5) analyzing inventory KPIs.",
     "source_path": "warehouse-optimization",
     "execution_mode": "hybrid",
@@ -985,11 +1049,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 61
+    "position": 65
   },
   {
     "slug": "competitive-pricing-strategy",
-    "name": "Competitive Pricing Strategy",
+    "name": "competitive-pricing-strategy",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": null,
@@ -1001,14 +1065,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 62
+    "position": 66
   },
   {
     "slug": "competitor-price-analysis",
-    "name": "Competitor Price Analysis",
+    "name": "competitor-price-analysis",
     "category": "Veille concurrentielle",
     "platform": null,
-    "emoji": null,
+    "emoji": "💲",
     "description": "Competitor pricing strategy analysis and market positioning. Price mapping, pricing gaps identification, elasticity signals evaluation, and strategic pricing optimization. Use when the user asks about competitor pricing, price analysis, pricing strategy, or competitive pricing research.",
     "source_path": "competitor-price-analysis",
     "execution_mode": "hybrid",
@@ -1017,59 +1081,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Relevés de prix concurrents : saisie manuelle et import CSV disponibles sans clé. Pour une collecte automatique, connecter une source de données marché (API Nexscope ou équivalent).",
     "is_core": false,
-    "position": 63
+    "position": 67
   },
   {
-    "slug": "E-Commerce Feed Management",
-    "name": "E Commerce Feed Management",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
+    "slug": "walmart-price-tracker",
+    "name": "Walmart Price Tracker",
+    "category": "Veille concurrentielle",
+    "platform": "walmart",
     "emoji": null,
-    "description": "",
-    "source_path": "ecommerce-feed-management",
-    "execution_mode": "reasoning",
-    "engine_key": null,
+    "description": "AI-powered Walmart price tracking and competitive pricing skill. Analyzes Walmart marketplace pricing trends, competitor price positioning, and generates repricing strategies for Walmart sellers.",
+    "source_path": "walmart-price-tracker",
+    "execution_mode": "hybrid",
+    "engine_key": "price-tracking",
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Relevés de prix concurrents : saisie manuelle et import CSV disponibles sans clé. Pour une collecte automatique, connecter une source de données marché (API Nexscope ou équivalent).",
     "is_core": false,
-    "position": 64
-  },
-  {
-    "slug": "ebay-seller-guide",
-    "name": "Ebay Seller Guide",
-    "category": "Canaux & Marketplaces",
-    "platform": "ebay",
-    "emoji": null,
-    "description": "",
-    "source_path": "ebay-seller-guide",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 65
-  },
-  {
-    "slug": "ebay-seller-tools",
-    "name": "Ebay Seller Tools",
-    "category": "Canaux & Marketplaces",
-    "platform": "ebay",
-    "emoji": null,
-    "description": "",
-    "source_path": "ebay-seller-tools",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 66
+    "position": 68
   },
   {
     "slug": "etsy-digital-products",
-    "name": "Etsy Digital Products",
+    "name": "etsy-digital-products",
     "category": "Canaux & Marketplaces",
     "platform": "etsy",
     "emoji": null,
@@ -1081,11 +1113,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 67
+    "position": 69
   },
   {
     "slug": "etsy-print-on-demand",
-    "name": "Etsy Print On Demand",
+    "name": "etsy-print-on-demand",
     "category": "Canaux & Marketplaces",
     "platform": "etsy",
     "emoji": null,
@@ -1097,107 +1129,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 68
-  },
-  {
-    "slug": "etsy-seller-guide",
-    "name": "Etsy Seller Guide",
-    "category": "Canaux & Marketplaces",
-    "platform": "etsy",
-    "emoji": null,
-    "description": "",
-    "source_path": "etsy-seller-guide",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 69
-  },
-  {
-    "slug": "multichannel-ecommerce",
-    "name": "Multichannel Ecommerce",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "multichannel-ecommerce",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
     "position": 70
   },
   {
-    "slug": "omnichannel-ecommerce",
-    "name": "Omnichannel Ecommerce",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "omnichannel-ecommerce",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 71
-  },
-  {
-    "slug": "Public Status Page",
-    "name": "Public Status Page",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "public-status-page",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 72
-  },
-  {
-    "slug": "Share of Shelf",
-    "name": "Share Of Shelf",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "share-of-shelf",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 73
-  },
-  {
-    "slug": "Shopify Page Speed",
-    "name": "Shopify Page Speed",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "shopify-page-speed",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 74
-  },
-  {
     "slug": "shopify-app-recommendations",
-    "name": "Shopify App Recommendations",
+    "name": "shopify-app-recommendations",
     "category": "Canaux & Marketplaces",
     "platform": "shopify",
     "emoji": null,
@@ -1209,11 +1145,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 75
+    "position": 71
   },
   {
     "slug": "shopify-google-channel",
-    "name": "Shopify Google Channel",
+    "name": "shopify-google-channel",
     "category": "Canaux & Marketplaces",
     "platform": "shopify",
     "emoji": null,
@@ -1225,11 +1161,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 76
+    "position": 72
   },
   {
     "slug": "shopify-migration",
-    "name": "Shopify Migration",
+    "name": "shopify-migration",
     "category": "Canaux & Marketplaces",
     "platform": "shopify",
     "emoji": null,
@@ -1241,31 +1177,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 77
-  },
-  {
-    "slug": "shopify-store-setup",
-    "name": "Shopify Store Setup",
-    "category": "Canaux & Marketplaces",
-    "platform": "shopify",
-    "emoji": null,
-    "description": "",
-    "source_path": "shopify-store-setup",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 78
+    "position": 73
   },
   {
     "slug": "tiktok-live-selling",
-    "name": "Tiktok Live Selling",
+    "name": "TikTok Live Selling",
     "category": "Canaux & Marketplaces",
     "platform": "tiktok-shop",
     "emoji": null,
-    "description": "",
+    "description": "Master TikTok live selling for e-commerce. Plan live sessions, engage audiences, pin products, handle real-time sales, and optimize GPM (GMV per mille) for maximum live revenue.",
     "source_path": "tiktok-live-selling",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1273,14 +1193,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 79
+    "position": 74
   },
   {
     "slug": "tiktok-shop-content-strategy",
-    "name": "Tiktok Shop Content Strategy",
+    "name": "tiktok-shop-content-strategy",
     "category": "Canaux & Marketplaces",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🎬",
     "description": "TikTok Shop content creation strategy and planning. Trending formats, viral hooks, product showcasing, hashtag strategy, and content calendar development. Use when the user asks about TikTok content strategy, viral content creation, TikTok marketing, or content planning.",
     "source_path": "tiktok-shop-content-strategy",
     "execution_mode": "reasoning",
@@ -1289,59 +1209,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 80
-  },
-  {
-    "slug": "Visual Regression Testing",
-    "name": "Visual Regression Testing",
-    "category": "Canaux & Marketplaces",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "visual-regression-testing",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 81
-  },
-  {
-    "slug": "walmart-seller-guide",
-    "name": "Walmart Seller Guide",
-    "category": "Canaux & Marketplaces",
-    "platform": "walmart",
-    "emoji": null,
-    "description": "",
-    "source_path": "walmart-seller-guide",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 82
-  },
-  {
-    "slug": "walmart-seller-tools",
-    "name": "Walmart Seller Tools",
-    "category": "Canaux & Marketplaces",
-    "platform": "walmart",
-    "emoji": null,
-    "description": "",
-    "source_path": "walmart-seller-tools",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 83
+    "position": 75
   },
   {
     "slug": "ecommerce-landing-page",
-    "name": "Ecommerce Landing Page",
+    "name": "ecommerce-landing-page",
     "category": "Contenu & Fiches produits",
     "platform": null,
     "emoji": "🖥️",
@@ -1353,15 +1225,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 84
+    "position": 76
   },
   {
     "slug": "ecommerce-video-marketing",
-    "name": "Ecommerce Video Marketing",
+    "name": "E-Commerce Video Marketing",
     "category": "Contenu & Fiches produits",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Create video marketing strategy for e-commerce brands. Product videos, unboxing, tutorials, UGC, live streams, and platform-specific video optimization for Amazon, TikTok, YouTube, and Instagram.",
     "source_path": "ecommerce-video-marketing",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1369,11 +1241,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 85
+    "position": 77
   },
   {
     "slug": "etsy-listing-photography",
-    "name": "Etsy Listing Photography",
+    "name": "etsy-listing-photography",
     "category": "Contenu & Fiches produits",
     "platform": "etsy",
     "emoji": null,
@@ -1385,11 +1257,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 86
+    "position": 78
   },
   {
     "slug": "etsy-shop-branding",
-    "name": "Etsy Shop Branding",
+    "name": "etsy-shop-branding",
     "category": "Contenu & Fiches produits",
     "platform": "etsy",
     "emoji": null,
@@ -1401,11 +1273,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 87
+    "position": 79
   },
   {
     "slug": "shopify-landing-page-builder",
-    "name": "Shopify Landing Page Builder",
+    "name": "shopify-landing-page-builder",
     "category": "Contenu & Fiches produits",
     "platform": "shopify",
     "emoji": null,
@@ -1417,11 +1289,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 88
+    "position": 80
   },
   {
     "slug": "shopify-product-photography-guide",
-    "name": "Shopify Product Photography Guide",
+    "name": "shopify-product-photography-guide",
     "category": "Contenu & Fiches produits",
     "platform": "shopify",
     "emoji": null,
@@ -1433,7 +1305,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 89
+    "position": 81
   },
   {
     "slug": "shoppable-video",
@@ -1441,7 +1313,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Contenu & Fiches produits",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Create and optimize shoppable video content for e-commerce. Strategy for TikTok Shop, Instagram Reels, YouTube Shorts, and Amazon Live with product tagging, CTAs, and conversion optimization.",
     "source_path": "shoppable-video",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1449,14 +1321,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 90
+    "position": 82
   },
   {
     "slug": "tiktok-shop-ads",
-    "name": "Tiktok Shop Ads",
+    "name": "tiktok-shop-ads",
     "category": "Contenu & Fiches produits",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "📢",
     "description": "TikTok Shop advertising strategy and campaign management. Product Shopping Ads, Video Shopping Ads, Live Shopping Ads, bidding optimization, and performance tracking. Use when the user asks about TikTok Shop advertising, paid ads, campaign setup, or TikTok Shop marketing.",
     "source_path": "tiktok-shop-ads",
     "execution_mode": "reasoning",
@@ -1465,11 +1337,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": false,
-    "position": 91
+    "position": 83
   },
   {
     "slug": "shopify-checkout-customization",
-    "name": "Shopify Checkout Customization",
+    "name": "shopify-checkout-customization",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
@@ -1481,11 +1353,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 92
+    "position": 84
   },
   {
     "slug": "shopify-facebook-instagram-shop",
-    "name": "Shopify Facebook Instagram Shop",
+    "name": "shopify-facebook-instagram-shop",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
@@ -1497,11 +1369,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 93
+    "position": 85
+  },
+  {
+    "slug": "shopify-page-speed",
+    "name": "Shopify Page Speed",
+    "category": "Conversion & Expérience",
+    "platform": "shopify",
+    "emoji": null,
+    "description": "AI-powered Shopify page speed optimization skill. Diagnoses performance bottlenecks, provides Core Web Vitals improvement plans, and recommends theme and app optimizations for faster Shopify stores.",
+    "source_path": "shopify-page-speed",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 86
   },
   {
     "slug": "shopify-speed-optimization",
-    "name": "Shopify Speed Optimization",
+    "name": "shopify-speed-optimization",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
@@ -1513,11 +1401,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 94
+    "position": 87
   },
   {
     "slug": "shopify-theme-optimization",
-    "name": "Shopify Theme Optimization",
+    "name": "shopify-theme-optimization",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
@@ -1529,11 +1417,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 95
+    "position": 88
   },
   {
     "slug": "shopify-upsell-cross-sell",
-    "name": "Shopify Upsell Cross Sell",
+    "name": "shopify-upsell-cross-sell",
     "category": "Conversion & Expérience",
     "platform": "shopify",
     "emoji": null,
@@ -1545,27 +1433,43 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 96
+    "position": 89
   },
   {
-    "slug": "Customer Feedback Analysis",
-    "name": "Customer Feedback Analysis",
-    "category": "Fidélisation & Relation client",
+    "slug": "synthetic-monitoring",
+    "name": "Synthetic Monitoring",
+    "category": "Conversion & Expérience",
     "platform": null,
     "emoji": null,
-    "description": "",
-    "source_path": "customer-feedback-analysis",
+    "description": "AI-powered synthetic monitoring skill for e-commerce websites. Designs automated user journey tests for add-to-cart, checkout, and payment flows with alerting rules and performance baselines.",
+    "source_path": "synthetic-monitoring",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
     "is_core": false,
-    "position": 97
+    "position": 90
+  },
+  {
+    "slug": "visual-regression-testing",
+    "name": "Visual Regression Testing",
+    "category": "Conversion & Expérience",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered visual regression testing skill for e-commerce websites. Designs screenshot comparison workflows, mobile/desktop visual checks, and change detection alerts to prevent conversion-killing UI bugs.",
+    "source_path": "visual-regression-testing",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
+    "is_core": false,
+    "position": 91
   },
   {
     "slug": "ecommerce-personalization",
-    "name": "Ecommerce Personalization",
+    "name": "ecommerce-personalization",
     "category": "Fidélisation & Relation client",
     "platform": null,
     "emoji": "🎯",
@@ -1577,11 +1481,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 98
+    "position": 92
   },
   {
     "slug": "ecommerce-returns-management",
-    "name": "Ecommerce Returns Management",
+    "name": "ecommerce-returns-management",
     "category": "Fidélisation & Relation client",
     "platform": null,
     "emoji": "📥",
@@ -1593,27 +1497,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 99
-  },
-  {
-    "slug": "ecommerce-subscription-model",
-    "name": "Ecommerce Subscription Model",
-    "category": "Fidélisation & Relation client",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "ecommerce-subscription-model",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 100
+    "position": 93
   },
   {
     "slug": "shopify-email-flows",
-    "name": "Shopify Email Flows",
+    "name": "shopify-email-flows",
     "category": "Fidélisation & Relation client",
     "platform": "shopify",
     "emoji": null,
@@ -1625,11 +1513,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 101
+    "position": 94
   },
   {
     "slug": "shopify-loyalty-program",
-    "name": "Shopify Loyalty Program",
+    "name": "shopify-loyalty-program",
     "category": "Fidélisation & Relation client",
     "platform": "shopify",
     "emoji": null,
@@ -1641,11 +1529,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 102
+    "position": 95
   },
   {
     "slug": "shopify-subscription-setup",
-    "name": "Shopify Subscription Setup",
+    "name": "shopify-subscription-setup",
     "category": "Fidélisation & Relation client",
     "platform": "shopify",
     "emoji": null,
@@ -1657,11 +1545,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 103
+    "position": 96
   },
   {
     "slug": "tiktok-shop-customer-service",
-    "name": "Tiktok Shop Customer Service",
+    "name": "tiktok-shop-customer-service",
     "category": "Fidélisation & Relation client",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -1673,11 +1561,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 104
+    "position": 97
   },
   {
     "slug": "tiktok-shop-returns",
-    "name": "Tiktok Shop Returns",
+    "name": "tiktok-shop-returns",
     "category": "Fidélisation & Relation client",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -1689,27 +1577,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 105
-  },
-  {
-    "slug": "Localization Testing",
-    "name": "Localization Testing",
-    "category": "International & Conformité",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "localization-testing",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 106
+    "position": 98
   },
   {
     "slug": "shopify-tax-compliance",
-    "name": "Shopify Tax Compliance",
+    "name": "shopify-tax-compliance",
     "category": "International & Conformité",
     "platform": "shopify",
     "emoji": null,
@@ -1721,11 +1593,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 107
+    "position": 99
   },
   {
     "slug": "tiktok-shop-compliance",
-    "name": "Tiktok Shop Compliance",
+    "name": "tiktok-shop-compliance",
     "category": "International & Conformité",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -1737,7 +1609,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 108
+    "position": 100
   },
   {
     "slug": "affiliate-marketing-strategy",
@@ -1745,7 +1617,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Marketing & Acquisition",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "Build and scale affiliate marketing programs for e-commerce stores. Covers program setup, commission structures, affiliate recruitment, tracking, and optimization for Shopify, Amazon, and independent stores.",
     "source_path": "affiliate-marketing-strategy",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1753,11 +1625,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 109
+    "position": 101
   },
   {
     "slug": "brand-protection-tiktok",
-    "name": "Brand Protection Tiktok",
+    "name": "brand-protection-tiktok",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -1769,15 +1641,15 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 110
+    "position": 102
   },
   {
     "slug": "ebay-advertising",
-    "name": "Ebay Advertising",
+    "name": "eBay Advertising",
     "category": "Marketing & Acquisition",
     "platform": "ebay",
     "emoji": null,
-    "description": "",
+    "description": "Master eBay advertising — Promoted Listings Standard, Advanced, and Offsite Ads. Campaign setup, bidding strategy, budget allocation, and ROI optimization for eBay sellers.",
     "source_path": "ebay-advertising",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1785,14 +1657,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": false,
-    "position": 111
+    "position": 103
   },
   {
     "slug": "ecommerce-social-media-marketing",
-    "name": "Ecommerce Social Media Marketing",
+    "name": "ecommerce-social-media-marketing",
     "category": "Marketing & Acquisition",
     "platform": null,
-    "emoji": null,
+    "emoji": "📱",
     "description": "Social media marketing strategy for ecommerce brands. Content calendar planning, platform-specific strategies, social commerce optimization, influencer collaboration, and community building. Use when the user asks about social media marketing, social commerce, content strategy, or social media for ecommerce.",
     "source_path": "ecommerce-social-media-marketing",
     "execution_mode": "reasoning",
@@ -1801,11 +1673,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 112
+    "position": 104
   },
   {
     "slug": "etsy-advertising",
-    "name": "Etsy Advertising",
+    "name": "etsy-advertising",
     "category": "Marketing & Acquisition",
     "platform": "etsy",
     "emoji": null,
@@ -1817,11 +1689,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": false,
-    "position": 113
+    "position": 105
   },
   {
     "slug": "etsy-offsite-ads",
-    "name": "Etsy Offsite Ads",
+    "name": "etsy-offsite-ads",
     "category": "Marketing & Acquisition",
     "platform": "etsy",
     "emoji": null,
@@ -1833,11 +1705,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": false,
-    "position": 114
+    "position": 106
   },
   {
     "slug": "etsy-social-media-marketing",
-    "name": "Etsy Social Media Marketing",
+    "name": "etsy-social-media-marketing",
     "category": "Marketing & Acquisition",
     "platform": "etsy",
     "emoji": null,
@@ -1849,14 +1721,30 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 115
+    "position": 107
+  },
+  {
+    "slug": "shopify-store-setup",
+    "name": "Shopify Store Setup",
+    "category": "Marketing & Acquisition",
+    "platform": "shopify",
+    "emoji": null,
+    "description": "Step-by-step Shopify store setup guide. From account creation to first sale — theme selection, product uploads, payment and shipping configuration, domain setup, and launch checklist.",
+    "source_path": "shopify-store-setup",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 108
   },
   {
     "slug": "tiktok-creator-marketplace",
-    "name": "Tiktok Creator Marketplace",
+    "name": "tiktok-creator-marketplace",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🎭",
     "description": "TikTok Creator Marketplace strategy and campaign management. Finding creators, negotiation tactics, campaign execution, performance tracking, and relationship building. Use when the user asks about TikTok Creator Marketplace, finding TikTok creators, creator partnerships, or influencer campaigns.",
     "source_path": "tiktok-creator-marketplace",
     "execution_mode": "reasoning",
@@ -1865,14 +1753,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 116
+    "position": 109
   },
   {
     "slug": "tiktok-influencer-marketing",
-    "name": "Tiktok Influencer Marketing",
+    "name": "tiktok-influencer-marketing",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "📱",
     "description": "TikTok creator campaigns and influencer marketing strategy. Creator discovery, outreach, ROI tracking, UGC strategy, and campaign management. Use when the user asks about TikTok influencer marketing, creator campaigns, influencer outreach, UGC content, or TikTok marketing partnerships.",
     "source_path": "tiktok-influencer-marketing",
     "execution_mode": "reasoning",
@@ -1881,14 +1769,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 117
+    "position": 110
   },
   {
     "slug": "tiktok-shop-affiliate-program",
-    "name": "Tiktok Shop Affiliate Program",
+    "name": "tiktok-shop-affiliate-program",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🤝",
     "description": "TikTok Shop affiliate program strategy and creator collaboration. Commission structures, creator recruitment, sample management, performance tracking, and partnership optimization. Use when the user asks about TikTok Shop affiliates, creator partnerships, or TikTok Shop Creator Fund.",
     "source_path": "tiktok-shop-affiliate-program",
     "execution_mode": "reasoning",
@@ -1897,11 +1785,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 118
+    "position": 111
   },
   {
     "slug": "tiktok-shop-creator-management",
-    "name": "Tiktok Shop Creator Management",
+    "name": "tiktok-shop-creator-management",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -1913,14 +1801,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 119
+    "position": 112
   },
   {
     "slug": "tiktok-shop-seller-guide",
-    "name": "Tiktok Shop Seller Guide",
+    "name": "tiktok-shop-seller-guide",
     "category": "Marketing & Acquisition",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🏪",
     "description": "Complete TikTok Shop selling guide. Setup, listing optimization, content strategy, live selling, creator affiliates, and scaling strategies. Use when the user asks about TikTok Shop setup, how to sell on TikTok, TikTok Shop guide, or getting started with TikTok Shop.",
     "source_path": "tiktok-shop-seller-guide",
     "execution_mode": "reasoning",
@@ -1929,7 +1817,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 120
+    "position": 113
   },
   {
     "slug": "walmart-advertising-strategy",
@@ -1937,7 +1825,7 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "category": "Marketing & Acquisition",
     "platform": "walmart",
     "emoji": null,
-    "description": "",
+    "description": "Master Walmart Connect advertising. Sponsored Products, Sponsored Brands, Display Ads, and onsite/offsite campaigns with bidding strategy, budget allocation, and ROAS optimization.",
     "source_path": "walmart-advertising-strategy",
     "execution_mode": "reasoning",
     "engine_key": null,
@@ -1945,11 +1833,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Données de campagnes : connecter la régie concernée (Google Ads, Meta, TikTok Ads) pour importer les performances réelles. Sans connexion, saisie manuelle des indicateurs.",
     "is_core": false,
-    "position": 121
+    "position": 114
+  },
+  {
+    "slug": "walmart-seller-tools",
+    "name": "Walmart Seller Tools",
+    "category": "Marketing & Acquisition",
+    "platform": "walmart",
+    "emoji": null,
+    "description": "Essential tools for Walmart Marketplace sellers. Product research, listing optimization, advertising management, inventory sync, and analytics tools for scaling on Walmart.",
+    "source_path": "walmart-seller-tools",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 115
   },
   {
     "slug": "brand-protection-amazon",
-    "name": "Brand Protection Amazon",
+    "name": "brand-protection-amazon",
     "category": "Marque & Réputation",
     "platform": "amazon",
     "emoji": null,
@@ -1961,11 +1865,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 122
+    "position": 116
   },
   {
     "slug": "brand-protection-shopify",
-    "name": "Brand Protection Shopify",
+    "name": "brand-protection-shopify",
     "category": "Marque & Réputation",
     "platform": "shopify",
     "emoji": null,
@@ -1977,11 +1881,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 123
+    "position": 117
   },
   {
     "slug": "brand-protection-walmart",
-    "name": "Brand Protection Walmart",
+    "name": "brand-protection-walmart",
     "category": "Marque & Réputation",
     "platform": "walmart",
     "emoji": null,
@@ -1993,11 +1897,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 124
+    "position": 118
   },
   {
     "slug": "ecommerce-branding",
-    "name": "Ecommerce Branding",
+    "name": "ecommerce-branding",
     "category": "Marque & Réputation",
     "platform": null,
     "emoji": "🎨",
@@ -2009,11 +1913,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 125
+    "position": 119
   },
   {
     "slug": "etsy-multi-shop",
-    "name": "Etsy Multi Shop",
+    "name": "etsy-multi-shop",
     "category": "Marque & Réputation",
     "platform": "etsy",
     "emoji": null,
@@ -2025,11 +1929,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 126
+    "position": 120
   },
   {
     "slug": "etsy-review-strategy",
-    "name": "Etsy Review Strategy",
+    "name": "etsy-review-strategy",
     "category": "Marque & Réputation",
     "platform": "etsy",
     "emoji": null,
@@ -2041,30 +1945,30 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 127
+    "position": 121
   },
   {
-    "slug": "Online Reputation Management",
+    "slug": "online-reputation-management",
     "name": "Online Reputation Management",
     "category": "Marque & Réputation",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "AI-powered online reputation management skill for e-commerce brands. Builds reputation monitoring frameworks, negative review response strategies, rating recovery plans, and crisis communication templates.",
     "source_path": "online-reputation-management",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 128
+    "position": 122
   },
   {
     "slug": "tiktok-shop-branding",
-    "name": "Tiktok Shop Branding",
+    "name": "tiktok-shop-branding",
     "category": "Marque & Réputation",
     "platform": "tiktok-shop",
-    "emoji": null,
+    "emoji": "🎨",
     "description": "Brand building and positioning on TikTok Shop. Brand identity development, content pillars, community engagement, brand storytelling, and authenticity strategies. Use when the user asks about TikTok branding, brand building, brand identity, or brand positioning on TikTok.",
     "source_path": "tiktok-shop-branding",
     "execution_mode": "reasoning",
@@ -2073,11 +1977,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 129
+    "position": 123
   },
   {
     "slug": "tiktok-shop-reviews",
-    "name": "Tiktok Shop Reviews",
+    "name": "tiktok-shop-reviews",
     "category": "Marque & Réputation",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -2089,11 +1993,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 130
+    "position": 124
   },
   {
     "slug": "brand-protection-ebay",
-    "name": "Brand Protection Ebay",
+    "name": "brand-protection-ebay",
     "category": "Prix & Rentabilité",
     "platform": "ebay",
     "emoji": null,
@@ -2105,11 +2009,59 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 131
+    "position": 125
+  },
+  {
+    "slug": "ebay-seller-guide",
+    "name": "eBay Seller Guide",
+    "category": "Prix & Rentabilité",
+    "platform": "ebay",
+    "emoji": null,
+    "description": "Complete guide for selling on eBay — auction and fixed-price strategies, listing optimization, eBay SEO, shipping setup, seller ratings, and scaling from casual seller to Top Rated Seller.",
+    "source_path": "ebay-seller-guide",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 126
+  },
+  {
+    "slug": "ebay-seller-tools",
+    "name": "eBay Seller Tools",
+    "category": "Prix & Rentabilité",
+    "platform": "ebay",
+    "emoji": null,
+    "description": "Essential tools and software for eBay sellers. Listing tools, repricing, analytics, inventory management, shipping, and research tools to scale your eBay business.",
+    "source_path": "ebay-seller-tools",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 127
+  },
+  {
+    "slug": "ecommerce-subscription-model",
+    "name": "E-Commerce Subscription Model",
+    "category": "Prix & Rentabilité",
+    "platform": null,
+    "emoji": null,
+    "description": "Design and launch subscription-based e-commerce businesses. Subscribe-and-save, membership boxes, replenishment models, pricing tiers, and churn reduction strategies.",
+    "source_path": "ecommerce-subscription-model",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 128
   },
   {
     "slug": "etsy-custom-orders",
-    "name": "Etsy Custom Orders",
+    "name": "etsy-custom-orders",
     "category": "Prix & Rentabilité",
     "platform": "etsy",
     "emoji": null,
@@ -2121,27 +2073,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 132
+    "position": 129
   },
   {
-    "slug": "Minimum Advertised Price",
-    "name": "Minimum Advertised Price",
+    "slug": "etsy-seller-guide",
+    "name": "Etsy Seller Guide",
     "category": "Prix & Rentabilité",
-    "platform": null,
+    "platform": "etsy",
     "emoji": null,
-    "description": "",
-    "source_path": "minimum-advertised-price",
+    "description": "Complete guide for selling on Etsy — from shop setup to scaling. Covers listing optimization, Etsy SEO, pricing strategy, Star Seller requirements, advertising, and shop analytics for handmade, vintage, and digital product sellers.",
+    "source_path": "etsy-seller-guide",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 133
+    "position": 130
   },
   {
     "slug": "shopify-dropshipping",
-    "name": "Shopify Dropshipping",
+    "name": "shopify-dropshipping",
     "category": "Prix & Rentabilité",
     "platform": "shopify",
     "emoji": null,
@@ -2153,11 +2105,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 134
+    "position": 131
   },
   {
     "slug": "shopify-wholesale-channel",
-    "name": "Shopify Wholesale Channel",
+    "name": "shopify-wholesale-channel",
     "category": "Prix & Rentabilité",
     "platform": "shopify",
     "emoji": null,
@@ -2169,11 +2121,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 135
+    "position": 132
   },
   {
     "slug": "tiktok-shop-pricing",
-    "name": "Tiktok Shop Pricing",
+    "name": "tiktok-shop-pricing",
     "category": "Prix & Rentabilité",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -2185,27 +2137,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 136
-  },
-  {
-    "slug": "Walmart Price Tracker",
-    "name": "Walmart Price Tracker",
-    "category": "Prix & Rentabilité",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "walmart-price-tracker",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 137
+    "position": 133
   },
   {
     "slug": "product-launch-strategy",
-    "name": "Product Launch Strategy",
+    "name": "product-launch-strategy",
     "category": "Recherche produit & Opportunités",
     "platform": null,
     "emoji": "🚀",
@@ -2217,11 +2153,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 138
+    "position": 134
+  },
+  {
+    "slug": "ecommerce-feed-management",
+    "name": "E-Commerce Feed Management",
+    "category": "SEO & Visibilité",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered product feed management and monitoring skill. Designs feed health checks, sync error diagnostics, missing SKU detection, and attribute completeness validation for e-commerce product catalogs.",
+    "source_path": "ecommerce-feed-management",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 135
   },
   {
     "slug": "ecommerce-keyword-research",
-    "name": "Ecommerce Keyword Research",
+    "name": "ecommerce-keyword-research",
     "category": "SEO & Visibilité",
     "platform": null,
     "emoji": "🔍",
@@ -2233,11 +2185,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Volumes de recherche et tendances : connecter une source de données mots-clés pour des chiffres réels. Sans clé, le module travaille sur vos propres données de recherche interne.",
     "is_core": false,
-    "position": 139
+    "position": 136
   },
   {
     "slug": "etsy-product-description",
-    "name": "Etsy Product Description",
+    "name": "etsy-product-description",
     "category": "SEO & Visibilité",
     "platform": "etsy",
     "emoji": null,
@@ -2249,11 +2201,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 140
+    "position": 137
   },
   {
     "slug": "etsy-shop-setup",
-    "name": "Etsy Shop Setup",
+    "name": "etsy-shop-setup",
     "category": "SEO & Visibilité",
     "platform": "etsy",
     "emoji": null,
@@ -2265,11 +2217,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 141
+    "position": 138
   },
   {
     "slug": "google-shopping-optimization",
-    "name": "Google Shopping Optimization",
+    "name": "google-shopping-optimization",
     "category": "SEO & Visibilité",
     "platform": null,
     "emoji": "🛒",
@@ -2281,11 +2233,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 142
+    "position": 139
   },
   {
     "slug": "shopify-blog-strategy",
-    "name": "Shopify Blog Strategy",
+    "name": "shopify-blog-strategy",
     "category": "SEO & Visibilité",
     "platform": "shopify",
     "emoji": null,
@@ -2297,14 +2249,14 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 143
+    "position": 140
   },
   {
     "slug": "shopify-marketing",
-    "name": "Shopify Marketing",
+    "name": "shopify-marketing",
     "category": "SEO & Visibilité",
     "platform": "shopify",
-    "emoji": null,
+    "emoji": "🟢",
     "description": "Comprehensive Shopify marketing strategy and execution. SEO optimization, email marketing automation, paid advertising management, conversion rate optimization, and customer retention strategies specifically for DTC Shopify brands. Use when the user asks about Shopify marketing, DTC marketing, Shopify SEO, or Shopify store growth.",
     "source_path": "shopify-marketing",
     "execution_mode": "reasoning",
@@ -2313,11 +2265,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 144
+    "position": 141
+  },
+  {
+    "slug": "walmart-seller-guide",
+    "name": "Walmart Seller Guide",
+    "category": "SEO & Visibilité",
+    "platform": "walmart",
+    "emoji": null,
+    "description": "Complete guide for selling on Walmart Marketplace. Covers application, listing optimization, Walmart SEO, WFS fulfillment, advertising, and scaling on America second-largest marketplace.",
+    "source_path": "walmart-seller-guide",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 142
   },
   {
     "slug": "ecommerce-shipping-rates",
-    "name": "Ecommerce Shipping Rates",
+    "name": "ecommerce-shipping-rates",
     "category": "Stocks & Logistique",
     "platform": null,
     "emoji": "🚚",
@@ -2329,11 +2297,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 145
+    "position": 143
   },
   {
     "slug": "etsy-seasonal-strategy",
-    "name": "Etsy Seasonal Strategy",
+    "name": "etsy-seasonal-strategy",
     "category": "Stocks & Logistique",
     "platform": "etsy",
     "emoji": null,
@@ -2345,11 +2313,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 146
+    "position": 144
   },
   {
     "slug": "etsy-shipping-strategy",
-    "name": "Etsy Shipping Strategy",
+    "name": "etsy-shipping-strategy",
     "category": "Stocks & Logistique",
     "platform": "etsy",
     "emoji": null,
@@ -2361,11 +2329,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 147
+    "position": 145
   },
   {
     "slug": "etsy-star-seller",
-    "name": "Etsy Star Seller",
+    "name": "etsy-star-seller",
     "category": "Stocks & Logistique",
     "platform": "etsy",
     "emoji": null,
@@ -2377,16 +2345,48 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 148
+    "position": 146
   },
   {
-    "slug": "Inventory Tracking Software",
-    "name": "Inventory Tracking Software",
+    "slug": "localization-testing",
+    "name": "Localization Testing",
     "category": "Stocks & Logistique",
     "platform": null,
     "emoji": null,
-    "description": "",
-    "source_path": "inventory-tracking-software",
+    "description": "AI-powered localization and internationalization testing skill for e-commerce sites. Designs multi-language QA frameworks, currency validation checks, shipping info verification, and regional compliance audits.",
+    "source_path": "localization-testing",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
+    "is_core": false,
+    "position": 147
+  },
+  {
+    "slug": "multichannel-ecommerce",
+    "name": "Multichannel E-Commerce Management",
+    "category": "Stocks & Logistique",
+    "platform": null,
+    "emoji": null,
+    "description": "Manage e-commerce operations across multiple marketplaces and channels. Inventory sync, order routing, listing management, and unified analytics for Amazon, Shopify, Walmart, eBay, Etsy, and TikTok Shop.",
+    "source_path": "multichannel-ecommerce",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": false,
+    "external_data_note": null,
+    "is_core": false,
+    "position": 148
+  },
+  {
+    "slug": "omnichannel-ecommerce",
+    "name": "Omnichannel E-Commerce",
+    "category": "Stocks & Logistique",
+    "platform": null,
+    "emoji": null,
+    "description": "Plan and execute omnichannel e-commerce strategy. Unify selling across Amazon, Shopify, Walmart, TikTok Shop, eBay, and Etsy with consistent branding, inventory sync, and customer experience.",
+    "source_path": "omnichannel-ecommerce",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
@@ -2396,24 +2396,8 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 149
   },
   {
-    "slug": "Restock Alert",
-    "name": "Restock Alert",
-    "category": "Stocks & Logistique",
-    "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "restock-alert",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 150
-  },
-  {
     "slug": "tiktok-shop-fulfillment",
-    "name": "Tiktok Shop Fulfillment",
+    "name": "tiktok-shop-fulfillment",
     "category": "Stocks & Logistique",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -2425,11 +2409,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 151
+    "position": 150
   },
   {
     "slug": "tiktok-shop-promotions",
-    "name": "Tiktok Shop Promotions",
+    "name": "tiktok-shop-promotions",
     "category": "Stocks & Logistique",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -2441,11 +2425,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 152
+    "position": 151
   },
   {
     "slug": "tiktok-shop-shipping",
-    "name": "Tiktok Shop Shipping",
+    "name": "tiktok-shop-shipping",
     "category": "Stocks & Logistique",
     "platform": "tiktok-shop",
     "emoji": null,
@@ -2457,64 +2441,80 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 153
+    "position": 152
   },
   {
-    "slug": "API Monitoring",
+    "slug": "api-monitoring",
     "name": "API Monitoring",
     "category": "Surveillance & Fiabilité",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "AI-powered API and webhook monitoring skill for e-commerce integrations. Designs health check systems, alerting strategies, SLA reporting templates, and integration validation for e-commerce API endpoints.",
     "source_path": "api-monitoring",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
     "is_core": false,
-    "position": 154
+    "position": 153
   },
   {
-    "slug": "Domain Monitoring",
+    "slug": "domain-monitoring",
     "name": "Domain Monitoring",
     "category": "Surveillance & Fiabilité",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "AI-powered domain and SSL certificate monitoring skill. Designs domain health checks, SSL expiry alerts, DNS anomaly detection, and security rating assessments for e-commerce websites.",
     "source_path": "domain-monitoring",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Surveillance web : nécessite une source de veille (API de recherche ou flux). Sans clé, les mentions sont saisies ou importées manuellement.",
     "is_core": false,
-    "position": 155
+    "position": 154
   },
   {
-    "slug": "File Integrity Monitoring",
+    "slug": "file-integrity-monitoring",
     "name": "File Integrity Monitoring",
     "category": "Surveillance & Fiabilité",
     "platform": null,
     "emoji": null,
-    "description": "",
+    "description": "AI-powered file integrity monitoring skill for e-commerce websites. Designs file change detection systems, tamper alerts, security baselines, and recovery procedures to protect online stores.",
     "source_path": "file-integrity-monitoring",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
+    "is_core": false,
+    "position": 155
+  },
+  {
+    "slug": "public-status-page",
+    "name": "Public Status Page",
+    "category": "Surveillance & Fiabilité",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered public status page design skill for e-commerce businesses. Creates status page architecture, incident communication templates, subscriber notification systems, and uptime reporting frameworks.",
+    "source_path": "public-status-page",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": true,
+    "external_data_note": "Supervision technique : nécessite un service de monitoring externe. Module fourni comme cadre d'analyse et de configuration.",
     "is_core": false,
     "position": 156
   },
   {
-    "slug": "Synthetic Monitoring",
-    "name": "Synthetic Monitoring",
-    "category": "Surveillance & Fiabilité",
+    "slug": "ecommerce-content-marketing",
+    "name": "ecommerce-content-marketing",
+    "category": "Veille concurrentielle",
     "platform": null,
-    "emoji": null,
-    "description": "",
-    "source_path": "synthetic-monitoring",
+    "emoji": "📣",
+    "description": "E-commerce content marketing strategy planner. Generates content calendars, topic ideas, and platform-specific strategies by analyzing customer reviews, trends, competitor content, and SEO opportunities. Two modes: (A) Build — create a full content strategy from scratch, (B) Audit — analyze existing content and find gaps. Supports TikTok, Instagram, YouTube, Pinterest, blog/SEO, and Amazon A+. No API key required. Use when: (1) planning content for a new product launch, (2) building a content calendar, (3) finding viral content ideas, (4) analyzing competitor content strategies, (5) extracting customer pain points for content topics.",
+    "source_path": "ecommerce-content-marketing",
     "execution_mode": "reasoning",
     "engine_key": null,
     "has_scripts": false,
@@ -2524,24 +2524,8 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "position": 157
   },
   {
-    "slug": "ecommerce-content-marketing",
-    "name": "Ecommerce Content Marketing",
-    "category": "Veille concurrentielle",
-    "platform": null,
-    "emoji": null,
-    "description": "E-commerce content marketing strategy planner. Generates content calendars, topic ideas, and platform-specific strategies by analyzing customer reviews, trends, competitor content, and SEO opportunities. Two modes: (A) Build — create a full content strategy from scratch, (B) Audit — analyze existing content and find gaps. Supports TikTok, Instagram, YouTube, Pinterest, blog/SEO, and Amazon A+. No API key required. Use when: (1) planning content for a new product launch, (2) building a content calendar, (3) finding viral content ideas, (4) analyzing competitor content strategies, (5) extracting customer pain points for content topics.",
-    "source_path": "ecommerce-content-marketing",
-    "execution_mode": "reasoning",
-    "engine_key": null,
-    "has_scripts": false,
-    "requires_external_data": false,
-    "external_data_note": null,
-    "is_core": false,
-    "position": 158
-  },
-  {
     "slug": "etsy-competitor-analysis",
-    "name": "Etsy Competitor Analysis",
+    "name": "etsy-competitor-analysis",
     "category": "Veille concurrentielle",
     "platform": "etsy",
     "emoji": null,
@@ -2553,11 +2537,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
-    "position": 159
+    "position": 158
   },
   {
     "slug": "etsy-keyword-research",
-    "name": "Etsy Keyword Research",
+    "name": "etsy-keyword-research",
     "category": "Veille concurrentielle",
     "platform": "etsy",
     "emoji": null,
@@ -2569,11 +2553,11 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": true,
     "external_data_note": "Volumes de recherche et tendances : connecter une source de données mots-clés pour des chiffres réels. Sans clé, le module travaille sur vos propres données de recherche interne.",
     "is_core": false,
-    "position": 160
+    "position": 159
   },
   {
     "slug": "etsy-pricing-strategy",
-    "name": "Etsy Pricing Strategy",
+    "name": "etsy-pricing-strategy",
     "category": "Veille concurrentielle",
     "platform": "etsy",
     "emoji": null,
@@ -2585,11 +2569,27 @@ export const NEXSCOPE_SKILLS: NexscopeSkillMeta[] = [
     "requires_external_data": false,
     "external_data_note": null,
     "is_core": false,
+    "position": 160
+  },
+  {
+    "slug": "share-of-shelf",
+    "name": "Share of Shelf",
+    "category": "Veille concurrentielle",
+    "platform": null,
+    "emoji": null,
+    "description": "AI-powered digital share of shelf analysis skill. Measures brand visibility within product categories, benchmarks against competitors, and tracks shelf position trends across e-commerce platforms.",
+    "source_path": "share-of-shelf",
+    "execution_mode": "reasoning",
+    "engine_key": null,
+    "has_scripts": false,
+    "requires_external_data": true,
+    "external_data_note": "Relevés de prix concurrents : saisie manuelle et import CSV disponibles sans clé. Pour une collecte automatique, connecter une source de données marché (API Nexscope ou équivalent).",
+    "is_core": false,
     "position": 161
   },
   {
     "slug": "social-media-monitor",
-    "name": "Social Media Monitor",
+    "name": "social-media-monitor",
     "category": "Veille concurrentielle",
     "platform": null,
     "emoji": "📱",

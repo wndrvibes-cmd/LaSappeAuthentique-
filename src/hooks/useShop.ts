@@ -6,8 +6,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
 import type {
-  Category, InventoryHealth, Order, OrderItem, Product, ProductImage, ProductOption,
-  ProductOptionValue, ProductReview, ProductVariant, Promotion, ShippingMethod,
+  CatalogProduct, CatalogVariant, Category, InventoryHealth, Order, OrderItem, ProductImage, ProductOption,
+  ProductOptionValue, ProductReview, Promotion, ShippingMethod,
   ShopPublicSettings, VariantAvailability,
 } from '@/types/database';
 
@@ -63,7 +63,7 @@ export interface CatalogFilters {
 }
 
 export interface CatalogItem {
-  product: Product;
+  product: CatalogProduct;
   minPrice: number;
   maxPrice: number;
   compareAtPrice: number | null;
@@ -80,7 +80,7 @@ export function useCatalog(filters: CatalogFilters = {}) {
   return useQuery({
     queryKey: ['catalog', filters],
     queryFn: async (): Promise<CatalogItem[]> => {
-      let query = supabase.from('products').select('*').eq('status', 'active');
+      let query = supabase.from('catalog_products').select('*');
 
       if (filters.categorySlug) {
         const { data: cat } = await supabase
@@ -108,7 +108,7 @@ export function useCatalog(filters: CatalogFilters = {}) {
 
       const ids = products.map((p) => p.id);
       const [variants, images, availability, options, optionValues, reviews] = await Promise.all([
-        supabase.from('product_variants').select('*').in('product_id', ids).eq('is_active', true),
+        supabase.from('catalog_variants').select('*').in('product_id', ids),
         supabase.from('product_images').select('*').in('product_id', ids).order('position'),
         supabase.from('variant_availability').select('*').in('product_id', ids),
         supabase.from('product_options').select('*').in('product_id', ids),
@@ -177,9 +177,9 @@ export function useCatalog(filters: CatalogFilters = {}) {
 /* ─────────────────────── Fiche produit détaillée ──────────────────────── */
 
 export interface ProductDetail {
-  product: Product;
+  product: CatalogProduct;
   category: Category | null;
-  variants: (ProductVariant & { available: number; optionValueIds: string[]; price: number })[];
+  variants: (CatalogVariant & { available: number; optionValueIds: string[] })[];
   options: (ProductOption & { values: ProductOptionValue[] })[];
   images: ProductImage[];
   reviews: ProductReview[];
@@ -193,7 +193,7 @@ export function useProduct(slug: string | undefined) {
     enabled: Boolean(slug),
     queryFn: async (): Promise<ProductDetail | null> => {
       const { data: product, error } = await supabase
-        .from('products').select('*').eq('slug', slug!).maybeSingle();
+        .from('catalog_products').select('*').eq('slug', slug!).maybeSingle();
       if (error) throw error;
       if (!product) return null;
 
@@ -201,8 +201,8 @@ export function useProduct(slug: string | undefined) {
         product.category_id
           ? supabase.from('categories').select('*').eq('id', product.category_id).maybeSingle()
           : Promise.resolve({ data: null }),
-        supabase.from('product_variants').select('*')
-          .eq('product_id', product.id).eq('is_active', true).order('position'),
+        supabase.from('catalog_variants').select('*')
+          .eq('product_id', product.id).order('position'),
         supabase.from('product_options').select('*').eq('product_id', product.id).order('position'),
         supabase.from('product_images').select('*').eq('product_id', product.id).order('position'),
         supabase.from('product_reviews').select('*')
@@ -261,13 +261,13 @@ export function useFeaturedProducts(limit = 8) {
     staleTime: 60_000,
     queryFn: async (): Promise<CatalogItem[]> => {
       const { data: products } = await supabase
-        .from('products').select('*').eq('status', 'active').eq('is_featured', true)
+        .from('catalog_products').select('*').eq('is_featured', true)
         .order('published_at', { ascending: false, nullsFirst: false }).limit(limit);
       if (!products?.length) return [];
 
       const ids = products.map((p) => p.id);
       const [variants, images, availability] = await Promise.all([
-        supabase.from('product_variants').select('id, product_id, price').in('product_id', ids),
+        supabase.from('catalog_variants').select('id, product_id, price').in('product_id', ids),
         supabase.from('product_images').select('product_id, storage_path, position')
           .in('product_id', ids).order('position'),
         supabase.from('variant_availability').select('variant_id, product_id, available').in('product_id', ids),
@@ -349,13 +349,13 @@ export function useWishlist(profileId: string | undefined) {
       if (!ids.length) return [];
 
       const { data: products } = await supabase
-        .from('products').select('*').in('id', ids).eq('status', 'active');
+        .from('catalog_products').select('*').in('id', ids);
       if (!products?.length) return [];
 
       const [images, variants, availability] = await Promise.all([
         supabase.from('product_images').select('product_id, storage_path, position')
           .in('product_id', ids).order('position'),
-        supabase.from('product_variants').select('id, product_id, price').in('product_id', ids),
+        supabase.from('catalog_variants').select('id, product_id, price').in('product_id', ids),
         supabase.from('variant_availability').select('variant_id, product_id, available').in('product_id', ids),
       ]);
       const imagesBy = groupBy(images.data ?? [], (i) => i.product_id);

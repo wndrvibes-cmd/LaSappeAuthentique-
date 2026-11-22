@@ -596,6 +596,14 @@ Deno.serve(async (req) => {
     });
   }
 
+  // Ménage préalable : les demandes dont la date limite est passée sont
+  // marquées expirées. `apply_approval()` les refuse déjà, mais ne peut pas
+  // changer leur statut — son exception annulerait l'écriture.
+  const { data: expiredCount } = await db.rpc('expire_stale_approvals');
+  if (expiredCount && Number(expiredCount) > 0) {
+    console.log(`[automation-tick] ${expiredCount} demande(s) d'approbation expirée(s)`);
+  }
+
   const results: { name: string; status: string; summary: string }[] = [];
   let totalApprovals = 0;
   let totalAlerts = 0;

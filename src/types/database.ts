@@ -48,6 +48,35 @@ export interface Product {
   created_at: string; updated_at: string;
 }
 
+/** Vue `catalog_products` : produit publié, colonnes publiables uniquement. */
+export interface CatalogProduct {
+  id: string; slug: string; name: string; subtitle: string | null;
+  description: string | null; story: string | null; care_guide: string | null;
+  composition: string | null; brand: string; status: ProductStatus;
+  category_id: string | null;
+  base_price: number; compare_at_price: number | null; currency: string;
+  weight_grams: number | null; lead_time_days: number;
+  seo_title: string | null; seo_description: string | null; tags: string[];
+  is_featured: boolean; published_at: string | null;
+  created_at: string; updated_at: string;
+}
+
+/** Vue `catalog_variants` : variante vendable, sans coût d'achat. */
+export interface CatalogVariant {
+  id: string; product_id: string; sku: string; barcode: string | null;
+  title: string; price: number; compare_at_price: number | null;
+  weight_grams: number | null; position: number; is_active: boolean;
+  currency: string;
+}
+
+/** Vue `catalog_pricing` : prix effectif pour le panier, sans coût. */
+export interface CatalogPricing {
+  variant_id: string; product_id: string; sku: string; variant_title: string;
+  product_name: string; product_slug: string;
+  price: number; compare_at_price: number | null;
+  currency: string; status: ProductStatus; category_id: string | null;
+}
+
 export interface ProductOption { id: string; product_id: string; name: string; position: number }
 export interface ProductOptionValue {
   id: string; option_id: string; value: string; swatch_hex: string | null; position: number;
@@ -372,6 +401,9 @@ export interface Database {
       product_performance: View<ProductPerformance>;
       inventory_health: View<InventoryHealth>;
       shop_public_settings: View<ShopPublicSettings>;
+      catalog_products: View<CatalogProduct>;
+      catalog_variants: View<CatalogVariant>;
+      catalog_pricing: View<CatalogPricing>;
     };
     Functions: {
       validate_discount: {
@@ -388,6 +420,8 @@ export interface Database {
                         Returns: ApprovalRequest };
       is_staff: { Args: Record<string, never>; Returns: boolean };
       is_admin: { Args: Record<string, never>; Returns: boolean };
+      product_is_public: { Args: { p_product_id: string }; Returns: boolean };
+      expire_stale_approvals: { Args: Record<string, never>; Returns: number };
       current_role: { Args: Record<string, never>; Returns: AppRole };
     };
     Enums: {

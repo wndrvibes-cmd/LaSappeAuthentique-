@@ -19,8 +19,26 @@
 --      supabase secrets set CRON_SECRET=...
 -- ============================================================================
 
-create extension if not exists pg_cron;
-create extension if not exists pg_net;
+--  pg_cron et pg_net sont disponibles sur Supabase mais doivent être activées.
+--  On tente l'activation sans faire échouer la migration : le calcul de la
+--  prochaine échéance et le back-office fonctionnent sans elles ; seul le
+--  déclenchement automatique en dépend.
+do $$
+begin
+  create extension if not exists pg_cron;
+exception when others then
+  raise notice 'pg_cron indisponible (%). Le déclenchement automatique des '
+    'automatisations restera manuel jusqu''à son activation dans '
+    'Database > Extensions.', sqlerrm;
+end $$;
+
+do $$
+begin
+  create extension if not exists pg_net;
+exception when others then
+  raise notice 'pg_net indisponible (%). Idem : activation requise pour la '
+    'planification.', sqlerrm;
+end $$;
 
 -- ───────── Prochaine échéance d'une expression cron (5 champs) ──────────
 --  Implémentation volontairement simple : elle couvre les expressions
@@ -130,6 +148,14 @@ language plpgsql security definer as $$
 declare
   v_job_name constant text := 'lsa-automation-tick';
 begin
+  if not exists (select 1 from pg_extension where extname = 'pg_cron') then
+    raise exception 'pg_cron n''est pas activée. Activez-la dans Supabase : '
+      'Database > Extensions > pg_cron, puis relancez cette fonction.';
+  end if;
+  if not exists (select 1 from pg_extension where extname = 'pg_net') then
+    raise exception 'pg_net n''est pas activée. Activez-la dans Supabase : '
+      'Database > Extensions > pg_net, puis relancez cette fonction.';
+  end if;
   if p_project_url is null or p_project_url = '' then
     raise exception 'URL du projet requise (ex. https://xxxx.supabase.co)';
   end if;

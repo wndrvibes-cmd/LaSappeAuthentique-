@@ -24,14 +24,105 @@ function walk(dir, acc = []) {
   return acc;
 }
 
-function frontmatter(text) {
-  const m = text.match(/^---\n([\s\S]*?)\n---\n/);
-  if (!m) return {};
-  const out = {};
-  for (const line of m[1].split('\n')) {
-    const kv = line.match(/^\s*([a-z_]+):\s*(.*)$/i);
-    if (kv) out[kv[1]] = kv[2].trim().replace(/^["']|["']$/g, '');
+/**
+ * Le dépôt mélange TROIS formats de métadonnées. L'audit local de la base a
+ * révélé que n'en lire qu'un laissait 42 modules sur 162 sans description.
+ *
+ *  1. frontmatter plat          name / description / metadata.nexscope.{emoji,category}
+ *                               → 120 fichiers
+ *  2. frontmatter imbriqué      nexscope: { name, category, tags, keywords… }
+ *                               sans description : elle est dans le corps
+ *                               → 16 fichiers
+ *  3. aucun frontmatter         titre H1 + premier paragraphe
+ *                               → 26 fichiers
+ *
+ * Les trois sont lus ici, pour qu'aucun module ne soit enregistré incomplet.
+ */
+function parseSkill(text, dirName) {
+  const fmMatch = text.match(/^---\n([\s\S]*?)\n---\n/);
+  const body = fmMatch ? text.slice(fmMatch[0].length) : text;
+
+  const out = { name: '', description: '', category: '', emoji: '', format: '' };
+
+  if (fmMatch) {
+    const fm = fmMatch[1];
+
+    /* Valeur d'une clé, y compris sur plusieurs lignes et en bloc replié. */
+    const scalar = (key) => {
+      const re = new RegExp(`^(\\s*)${key}:\\s*(.*)$`, 'm');
+      const m = fm.match(re);
+      if (!m) return '';
+      const indent = m[1].length;
+      let value = m[2].trim();
+
+      // Bloc replié ou littéral : on agrège les lignes plus indentées.
+      if (value === '>' || value === '|' || value === '>-' || value === '|-') {
+        const lines = fm.slice(m.index + m[0].length).split('\n');
+        const collected = [];
+        for (const line of lines) {
+          if (line.trim() === '') { collected.push(''); continue; }
+          const lineIndent = line.length - line.trimStart().length;
+          if (lineIndent <= indent) break;
+          collected.push(line.trim());
+        }
+        return collected.join(' ').replace(/\s+/g, ' ').trim();
+      }
+
+      // Chaîne entre guillemets pouvant se poursuivre sur les lignes suivantes.
+      const quote = value[0] === '"' ? '"' : value[0] === "'" ? "'" : null;
+      if (quote) {
+        if (value.length > 1 && value.endsWith(quote)) return value.slice(1, -1);
+        const lines = fm.slice(m.index + m[0].length).split('\n');
+        let acc = value.slice(1);
+        for (const line of lines) {
+          const trimmed = line.trim();
+          acc += ` ${trimmed}`;
+          if (trimmed.endsWith(quote)) { acc = acc.slice(0, -1); break; }
+        }
+        return acc.replace(/\s+/g, ' ').trim();
+      }
+
+      return value;
+    };
+
+    out.name = scalar('name');
+    out.description = scalar('description');
+    out.category = scalar('category');
+    out.emoji = scalar('emoji');
+    out.format = /^\s*nexscope:\s*$/m.test(fm) && !/^name:/m.test(fm)
+      ? 'frontmatter-imbrique' : 'frontmatter-plat';
+  } else {
+    out.format = 'corps-markdown';
   }
+
+  /* Repli sur le corps du document pour ce qui manque encore. */
+  const heading = body.match(/^#\s+(.+)$/m);
+  if (heading) {
+    const title = heading[1].trim();
+    // Un emoji en fin de titre est l'usage du dépôt : « Titre 🚀 »
+    const emojiMatch = title.match(/\s([\p{Extended_Pictographic}]+)\s*$/u);
+    if (!out.emoji && emojiMatch) out.emoji = emojiMatch[1];
+    if (!out.name) out.name = title.replace(/\s[\p{Extended_Pictographic}]+\s*$/u, '').trim();
+  }
+
+  if (!out.description && heading) {
+    // Premier paragraphe de texte après le titre : c'est la description
+    // rédigée par les auteurs, préférable à une reformulation.
+    for (const block of body.slice(heading.index + heading[0].length).split(/\n\s*\n/)) {
+      const b = block.trim();
+      if (!b || b.startsWith('#') || b.startsWith('![') || b.startsWith('```')
+          || b.startsWith('|') || b.startsWith('-') || b.startsWith('>')) continue;
+      out.description = b.replace(/\s+/g, ' ').trim();
+      break;
+    }
+  }
+
+  if (!out.name) out.name = dirName;
+  if (!out.description) {
+    out.description = `Compétence « ${out.name} » du dépôt Nexscope. `
+      + `Aucune description n'est fournie dans le fichier source : se reporter au SKILL.md.`;
+  }
+
   return out;
 }
 
@@ -130,20 +221,24 @@ const CORE = new Set([
 
 /* ──────────────────────────── Construction ─────────────────────────── */
 const files = walk(ROOT).sort();
+const formats = {};
 const skills = files.map((file) => {
   const text = readFileSync(file, 'utf8');
-  const fm = frontmatter(text);
   const dir = file.replace(/\/SKILL\.md$/, '');
-  const slug = fm.name || basename(dir);
-  const desc = (fm.description || '').replace(/\s+/g, ' ').trim();
+  const dirName = basename(dir);
+  const parsed = parseSkill(text, dirName);
+  formats[parsed.format] = (formats[parsed.format] ?? 0) + 1;
+  // Le slug reste le nom du dossier : c'est l'identifiant stable du dépôt.
+  const slug = dirName;
+  const desc = parsed.description;
   const { engine_key, execution_mode } = engineOf(slug);
   const external = externalOf(slug);
   return {
     slug,
-    name: slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+    name: parsed.name,
     category: classify(slug, desc),
     platform: platformOf(slug),
-    emoji: fm.emoji || null,
+    emoji: parsed.emoji || null,
     description: desc,
     source_path: relative(ROOT, dir),
     execution_mode,
@@ -237,6 +332,10 @@ console.log(`Modules uniques         : ${unique.length}`);
 console.log(`Avec moteur déterministe: ${unique.filter((s) => s.engine_key).length}`);
 console.log(`Scripts Python d'origine: ${unique.filter((s) => s.has_scripts).length}`);
 console.log(`Données externes requises: ${unique.filter((s) => s.requires_external_data).length}`);
+const missing = unique.filter((s) => !s.description || !s.description.trim());
+console.log(`Sans description        : ${missing.length}${missing.length ? ` → ${missing.map((s) => s.slug).join(', ')}` : ' (aucun)'}`);
+console.log('\nFormats de métadonnées rencontrés :');
+for (const [f, n] of Object.entries(formats)) console.log(`  ${String(n).padStart(3)}  ${f}`);
 console.log('\nPar catégorie :');
 for (const [c, list] of Object.entries(byCat).sort((a, b) => b[1].length - a[1].length))
   console.log(`  ${String(list.length).padStart(3)}  ${c}`);

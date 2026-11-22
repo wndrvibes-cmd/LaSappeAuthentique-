@@ -28,7 +28,7 @@ modérer · paramètres.
 ### Intelligence commerciale
 
 Les 162 modules Nexscope, filtrables par catégorie, mode d'exécution et
-dépendance externe. **55 d'entre eux s'appuient sur l'un des 13 moteurs de
+dépendance externe. **60 d'entre eux s'appuient sur l'un des 13 moteurs de
 calcul** portés en TypeScript depuis les scripts Python du dépôt : ils
 s'exécutent dans l'application, sur vos données réelles, sans aucune clé API.
 
@@ -128,7 +128,7 @@ npm run dev
 
 À ce stade, **tout fonctionne sans aucune autre clé** : catalogue, panier,
 comptes, commandes en attente de règlement, back-office complet, et les
-55 modules à moteur de calcul.
+60 modules à moteur de calcul.
 
 ---
 
@@ -176,7 +176,7 @@ npx supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
 npx supabase functions deploy skill-run
 ```
 
-> **Sans cette clé** : les 55 modules à moteur de calcul fonctionnent
+> **Sans cette clé** : les 60 modules à moteur de calcul fonctionnent
 > normalement — chiffres, constats et recommandations sont produits localement.
 > Seule la rédaction de l'analyse est indisponible, et l'interface le dit.
 
@@ -262,6 +262,7 @@ npx supabase functions deploy stripe-webhook --no-verify-jwt
 | `npm run build` | Build de production (`tsc -b && vite build`) |
 | `npm run preview` | Prévisualisation du build |
 | `npm test` | 71 tests des moteurs de calcul |
+| `./scripts/test-db.sh` | Applique le schéma sur une base jetable et lance 37 tests de sécurité |
 | `npm run typecheck` | Vérification de types |
 | `npm run db:types` | Régénère `src/types/database.ts` depuis le schéma |
 | `npm run nexscope:sync` | Régénère le registre depuis un clone du dépôt |
@@ -299,6 +300,7 @@ src/
   pages/admin/             back-office
 tests/
   engines.test.ts          71 tests des formules
+  sql/rls.test.sql         37 tests de sécurité de la base
 ```
 
 ---
