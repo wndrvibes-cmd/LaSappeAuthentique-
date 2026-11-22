@@ -1,0 +1,43 @@
+{
+  "name": "lasappe-authentique",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Plateforme e-commerce intelligente — boutique + back-office + moteur d'intelligence commerciale Nexscope",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit false --emitDeclarationOnly false -p tsconfig.app.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "nexscope:sync": "node scripts/generate-registry.mjs .nexscope-src",
+    "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/database.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.47.10",
+    "@tanstack/react-query": "5.62.11",
+    "clsx": "2.1.1",
+    "date-fns": "4.1.0",
+    "framer-motion": "11.15.0",
+    "lucide-react": "0.469.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.1",
+    "recharts": "2.15.0",
+    "tailwind-merge": "2.6.0",
+    "zustand": "5.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "@vitejs/plugin-react": "4.3.4",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.7.2",
+    "vite": "6.0.7",
+    "vitest": "2.1.8"
+  }
+}
