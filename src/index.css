@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════════════
+   La Sappe Authentique — fondations visuelles
+
+   Direction artistique : l'élégance de la Sape. Papier ivoire, encre
+   profonde, laiton. Typographie éditoriale (Fraunces) pour les titres,
+   Inter pour l'interface. Rien de « template e-commerce » : des règles
+   typographiques nettes, des filets fins, des aplats francs.
+   ══════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    --surface: 248 245 239;        /* ivoire  */
+    --surface-raised: 255 255 255;
+    --surface-sunken: 242 237 227;
+    --text: 12 12 14;             /* encre   */
+    --text-muted: 110 110 126;
+    --line: 231 223 209;
+    --accent: 193 154 62;         /* laiton  */
+    --accent-contrast: 12 12 14;
+    color-scheme: light;
+  }
+
+  /* Le back-office bascule en surface sombre : densité et confort visuel
+     sur de longues sessions, sans changer l'identité de marque. */
+  :root[data-theme='dark'],
+  [data-surface='admin-dark'] {
+    --surface: 18 18 22;
+    --surface-raised: 26 26 32;
+    --surface-sunken: 12 12 14;
+    --text: 244 241 235;
+    --text-muted: 154 154 168;
+    --line: 42 42 52;
+    --accent: 224 190 104;
+    --accent-contrast: 12 12 14;
+    color-scheme: dark;
+  }
+
+  * { @apply border-ivory-300; }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ivory text-ink antialiased;
+    font-family: Inter, system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: Fraunces, Georgia, serif;
+    font-variation-settings: 'SOFT' 0, 'WONK' 1;
+    @apply tracking-tight;
+  }
+
+  /* Chiffres alignés dans les tableaux : lecture en colonne */
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  ::selection { @apply bg-brass/30 text-ink; }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brass ring-offset-2 ring-offset-ivory;
+  }
+
+  /* Barres de défilement discrètes */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply rounded-full bg-ink-300/40; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-ink-300/70; }
+}
+
+@layer components {
+  /* ── Surtitre éditorial : petites capitales espacées, filet de laiton ── */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-ink-400;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-6 bg-brass;
+  }
+
+  /* ── Filet de section ── */
+  .rule { @apply h-px w-full bg-ivory-300; }
+
+  /* ── Carte ── */
+  .card {
+    @apply rounded-lg border border-ivory-300 bg-white shadow-card;
+  }
+
+  /* ── Lien souligné à l'animation ── */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 ease-silk;
+  }
+  .link-underline:hover::after { @apply origin-left scale-x-100; }
+
+  /* ── Squelette de chargement ── */
+  .skeleton {
+    @apply relative overflow-hidden rounded bg-ivory-300/70;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  }
+
+  /* ── Grain papier, appliqué aux grandes surfaces sombres ── */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Zone d'écriture longue ── */
+  .prose-sappe {
+    @apply text-[0.9375rem] leading-relaxed text-ink-600;
+  }
+  .prose-sappe h2 { @apply mb-3 mt-8 font-display text-xl text-ink; }
+  .prose-sappe h3 { @apply mb-2 mt-6 font-display text-base text-ink; }
+  .prose-sappe p { @apply mb-4; }
+  .prose-sappe ul { @apply mb-4 list-disc space-y-1.5 pl-5; }
+  .prose-sappe ol { @apply mb-4 list-decimal space-y-1.5 pl-5; }
+  .prose-sappe strong { @apply font-semibold text-ink; }
+  .prose-sappe code { @apply rounded bg-ivory-200 px-1 py-0.5 font-mono text-[0.8125rem]; }
+  .prose-sappe table { @apply mb-4 w-full border-collapse text-[0.8125rem]; }
+  .prose-sappe th { @apply border-b border-ivory-300 py-2 pr-3 text-left font-semibold text-ink; }
+  .prose-sappe td { @apply border-b border-ivory-200 py-2 pr-3; }
+  .prose-sappe blockquote { @apply mb-4 border-l-2 border-brass pl-4 italic; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  /* Respecte l'encoche des téléphones */
+  .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+}
