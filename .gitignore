@@ -10,3 +10,6 @@ dist-ssr
 coverage
 .supabase
 *.log
+
+# Caches de compilation TypeScript
+*.tsbuildinfo
